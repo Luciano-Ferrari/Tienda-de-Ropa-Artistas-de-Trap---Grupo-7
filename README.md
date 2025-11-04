@@ -1,0 +1,1 @@
+# Tienda-de-Ropa-Artistas-de-Trap---Grupo-7
