@@ -1,0 +1,12 @@
+{
+  "name": "tienda-ropa-trap",
+  "version": "1.0.0",
+  "description": "Tienda de Ropa Artistas de Trap",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
