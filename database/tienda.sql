@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2025 at 08:52 PM
+-- Generation Time: Nov 12, 2025 at 09:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `tienda`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artistas`
+--
+
+CREATE TABLE `artistas` (
+  `id_artista` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `ruta_banner` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artistas`
+--
+
+INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
+(1, 'Duki', '../src/img/Duki.png'),
+(2, 'YSY A', NULL),
+(3, 'Trueno', NULL),
+(4, 'Neo Pistea', NULL),
+(5, 'C.R.O.', NULL),
+(6, 'Khea', NULL),
+(7, 'Milo j', NULL),
+(8, 'Barderos', NULL),
+(9, 'Modo Diablo', '../src/img/ModoDiablo.png'),
+(10, 'Wos', '../src/img/Wos.png');
 
 -- --------------------------------------------------------
 
@@ -66,25 +94,17 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (22, 1, 'Remera de C.R.O', 'Mi Chain de Roque', 20.00, '../src/img/ropa-Duki-1.png', 'Remeras'),
 (23, 1, 'Vinilo de Duki', 'Ameri', 80.00, '../src/img/Vinilo-Duki-4.png', 'Accesorios'),
 (24, 1, 'Cuadro de Duki', '24', 30.00, '../src/img/Cuadro-Duki-2.png', 'Accesorios'),
-(25, 1, 'Remera de Duki', 'Negro', 30.00, '../src/img/ropa-Duki-7.png', 'Remeras'),
-(26, 1, 'Remera Duki Tour', 'Negra Boxy', 30.00, '../src/img/ropa-Duki-6.png', 'Remeras'),
-(27, 1, 'Remera Duki X YSY A', 'Corte Clásico', 35.00, '../src/img/ropa-Duki-5.png', 'Remeras'),
-(28, 1, 'Remera Duki \"Goteo\" Gris', 'Corte Raglan', 30.00, '../src/img/ropa-Duki-4.png', 'Remeras'),
-(29, 1, 'Remera Duki Logo Clásico', 'Boxy Fit', 30.00, '../src/img/ropa-Duki-3.png', 'Remeras'),
-(30, 1, 'Remera Duki \"Ameri\"', 'Oversize Negra', 35.00, '../src/img/ropa-Duki-2.png', 'Remeras'),
 (31, 1, 'Sticker Duki Logo', 'Pack de 5', 2.00, '../src/img/sticker-duki-3.png', 'Accesorios'),
 (32, 1, 'Vinilo Duki \"Temporada de Reggaeton\"', 'Doble LP', 90.00, '../src/img/Vinilo-Duki-7.png', 'Accesorios'),
 (33, 1, 'Vinilo Duki \"Super Sangre Joven\"', 'LP Colores', 90.00, '../src/img/Vinilo-Duki-5.png', 'Accesorios'),
 (34, 1, 'Sticker Duki \"Jesus\"', 'Vinilo', 1.00, '../src/img/sticker-duki-2.png', 'Accesorios'),
-(35, 1, 'Cuadro Duki \"Antes de Ameri\"', 'Canvas 40x40', 45.00, '../src/img/Cuadro-Duki-3.png', 'Accesorios'),
-(36, 1, 'Llavero Duki Logo', 'Metal 3D', 8.00, '../src/img/Llavero-Duki-1.png', 'Accesorios'),
 (37, 1, 'Remera de Duki ', '5202', 20.00, '../src/img/ropa-Duki-7.png', 'Remeras'),
 (38, 1, 'Remera de Duki', 'Super Sangre Joven', 20.00, '../src/img/ropa-Duki-6.png', 'Remeras'),
 (39, 1, 'Remera de Duki', 'Ameri Azul', 20.00, '../src/img/ropa-Duki-5.png', 'Remeras'),
 (40, 1, 'Remera de Duki', 'Rockstar', 20.00, '../src/img/ropa-Duki-4.png', 'Remeras'),
 (41, 1, 'Remera de Duki', 'Negro', 20.00, '../src/img/ropa-Duki-3.png', 'Remeras'),
 (42, 1, 'Remera de Duki', 'Gris', 20.00, '../src/img/ropa-Duki-2.png', 'Remeras'),
-(43, 1, 'Sticker de Duki', 'PLastificado', 1.00, '../src/img/sticker-duki-2.png', 'Accesorios'),
+(43, 1, 'Sticker de Duki', 'Plastificado', 1.00, '../src/img/sticker-duki-2.png', 'Accesorios'),
 (44, 1, 'Sticker de Duki', 'PLastificado', 1.00, '../src/img/sticker-duki-3.png', 'Accesorios'),
 (45, 1, 'Vinilo de Duki', 'Antes de Ameri', 80.00, '../src/img/Vinilo-Duki-7.png', 'Accesorios'),
 (46, 1, 'Vinilo de Duki', 'Desde el Fin del Mundo', 80.00, '../src/img/Vinilo-Duki-5.png', 'Accesorios'),
@@ -96,6 +116,12 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 --
 
 --
+-- Indexes for table `artistas`
+--
+ALTER TABLE `artistas`
+  ADD PRIMARY KEY (`id_artista`);
+
+--
 -- Indexes for table `productos`
 --
 ALTER TABLE `productos`
@@ -105,6 +131,12 @@ ALTER TABLE `productos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `artistas`
+--
+ALTER TABLE `artistas`
+  MODIFY `id_artista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `productos`

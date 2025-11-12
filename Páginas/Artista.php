@@ -15,14 +15,26 @@
     <?php
     include '../includes/conexion.php';
 
-    $id_artista = $_GET['id_artista'] ?? null;
+    $products_per_page = 12;
+    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
+    $offset = ($page - 1) * $products_per_page;
 
+    $id_artista = $_GET['id_artista'] ?? null;
     $where_clause = "";
     if ($id_artista && is_numeric($id_artista)) {
         $where_clause = " WHERE p.id_artista = " . $id_artista;
     }
 
-    $sql = "SELECT 
+    $count_sql = "SELECT COUNT(p.id_producto) AS total_products 
+              FROM productos p 
+              JOIN artistas a ON p.id_artista = a.id_artista"
+        . $where_clause;
+    $count_result = $conexion->query($count_sql);
+    $total_products = $count_result->fetch_assoc()['total_products'] ?? 0;
+    $total_pages = ceil($total_products / $products_per_page);
+
+    $sql = "SELECT DISTINCT 
+        p.id_producto,     
         p.nombre AS nombre_producto, 
         p.descripcion, 
         p.precio, 
@@ -35,7 +47,8 @@
       JOIN 
         artistas a ON p.id_artista = a.id_artista"
         . $where_clause .
-        " ORDER BY
+        " GROUP BY p.id_producto "
+        . " ORDER BY
         CASE p.categoria
             WHEN 'Remeras' THEN 1   
             WHEN 'Buzos' THEN 2     
@@ -45,15 +58,16 @@
         CASE
             WHEN p.categoria = 'Accesorios' THEN
                 CASE
-                    WHEN p.nombre LIKE '%Gorra%' THEN 1  -- Gorras
-                    WHEN p.nombre LIKE '%Cadena%' THEN 2 -- Cadenas
-                    WHEN p.nombre LIKE '%Vinilo%' THEN 3 -- Vinilos
-                    WHEN p.nombre LIKE '%Cuadro%' THEN 4 -- Cuadros
-                    ELSE 5 
+                    WHEN p.nombre LIKE '%Gorra%' THEN 1
+                    WHEN p.nombre LIKE '%Cadena%' THEN 2
+                    WHEN p.nombre LIKE '%Vinilo%' THEN 3
+                    WHEN p.nombre LIKE '%Cuadro%' THEN 4
+                    ELSE 5
                 END
-            ELSE 0
+            ELSE 0 
         END,
-        p.nombre ASC";
+        p.nombre ASC"
+        . " LIMIT " . $products_per_page . " OFFSET " . $offset;
 
     $resultado = $conexion->query($sql);
 
