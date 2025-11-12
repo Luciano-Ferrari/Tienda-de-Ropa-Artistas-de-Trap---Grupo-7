@@ -5,50 +5,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Ropa Artistas de Trap</title>
-    <stylesheet src="../src/css/Inicio.css"></stylesheet>
+    <stylesheet src="../src/css/Style.css"></stylesheet>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     
 </head>
 
 <body>
-
-    
-    
     <nav>
-    <div>
-        <img src="../src/img/82cb671fe93aec295a64e6810373d6dba70ff39c.png" alt="Logo Menu">
-        
-        <div>
-            <a href="#">Duki</a>
-            <a href="#">YSY A</a>
-            <a href="#">Trueno</a>
-            <a href="#">Neo Pistea</a>
-            <a href="#">C.R.O</a>
-            <a href="#">Khea</a>
-            <a href="#">Mio j</a>
-            <a href="#">Barderos</a>
-            <a href="#">Wos</a>
-            <a href="#">Modo Diablo</a>
-            <a href="#">Todos</a>
+      <div class="nav-izq">
+        <div id="Menu-Desplegable">
+          <img src="../src/img/menu-icon.png" alt="Menú" id="btnMenu">
+          <aside id="menuLateral" class="panel-izq">
+            <h2>Artistas</h2>
+            <ul>
+              <li><a href="#">Duki</a></li>
+              <li><a href="#">YSY A</a></li>
+              <li><a href="#">Trueno</a></li>
+              <li><a href="#">Neo Pistea</a></li>
+              <li><a href="#">C.R.O.</a></li>
+              <li><a href="#">Khea</a></li>
+              <li><a href="#">Milo j</a></li>
+              <li><a href="#">Barderos</a></li>
+              <li><a href="#">Wos</a></li>
+              <li><a href="#">Modo Diablo</a></li>
+              <li><a href="#">Todos</a></li>
+            </ul>
+          </aside>
         </div>
-     
-        
         <h2>Inicio</h2>
-    </div>
-    <div>
-    <button>Registrarse</button>
+      </div>
 
-    <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="">
-    </div>
+        <div class="nav-der">
+            <button>Registrarse</button>
+
+            <img src="../src/img/carrito.png" alt="Carrito" id="Btn-Carrito">
+
+            <aside id="carritoLateral" class="panel-der">
+                <h2>Carrito</h2>
+
+                <div id="Productos">
+                    <ul id="Lista-Productos"></ul>
+                </div>
+
+                <hr>
+
+                <div>
+                    <ul id="Lista-Nombre-Precio"></ul>
+                </div>
+
+                <h5>Total</h5>
+                <p id="Suma-Total-Precios">$</p>
+
+                <button id="Btn-Pagar">Pagar</button>
+            </aside>
+        </div>
     </nav>
 
+
+
     <div id="Banner-Principal"">
-    <img src="../src/img/1.png" alt="Logo-Trap">
+        <img src=" ../src/img/1.png" alt="Logo-Trap">
     </div>
 
-    /*Insertar carrousel*/
+    <div id="Carrousel">
+        <h6>Productos Recomendados</h6>
+
+        <div class="Carrousel-Cont">
+            <button class="flecha-Carrousel" id="btnIzq"><i class="bi bi-caret-right-fill"></i></button>
+
+            <div class="carrousel">
+                <div class="item"><img src="" alt="Producto 1"></div>
+                <div class="item"><img src="" alt="Producto 2"></div>
+                <div class="item"><img src="" alt="Producto 3"></div>
+                <div class="item"><img src="" alt="Producto 4"></div>
+                <div class="item"><img src="" alt="Producto 5"></div>
+                <div class="item"><img src="" alt="Producto 6"></div>
+                <div class="item"><img src="" alt="Producto 7"></div>
+                <div class="item"><img src="" alt="Producto 8"></div>
+            </div>
+
+            <button class="flecha-Carrousel" id="btnDer"><i class="bi bi-caret-left-fill"></i></i></button>
+        </div>
+    </div>
 
     <p>Ver todo <i class="bi bi-chevron-down"></i></p>
 
+    <section id="Seccion-Productos">
+        <div id="Cont-Producto">
+            <img src="(Ruta de la img)" alt="(Nombre del Producto)">
+
+            <div id="Info-Producto">
+                <p id="Nombre-P"></p>
+                <p id="Precio-P"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="info-footer">
+
+            <div class="direccion">
+                <p>DIRECCION <br>
+                    DR. NORBERTO QUIERNO COSTA 1209 <br>
+                    2B</p>
+            </div>
+
+            <div class="pais">
+                <p>Argentina</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="redes">
+            <p><img src="../src/img/instagram.png" alt="Instagram">@sebas.rzq09</p>
+            <p><img src="../src/img/instagram.png" alt="Instagram">@lixhca2</p>
+            <p><img src="../src/img/instagram.png" alt="Instagram">@trapshop_"247</p>
+        </div>
+
+        <div class="logo-footer">
+            <img src="../src/img/1.png" alt="Logo-Trap Footer">
+        </div>
+
+        <hr>
+
+        <p class="copyright">
+            © 2025 Trap Company malvados y asociados
+        </p>
+    </footer>
 </body>
 
 </html>
