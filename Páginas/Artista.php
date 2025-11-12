@@ -8,10 +8,66 @@
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
-
 </head>
 
 <body>
+
+    <?php
+    include '../includes/conexion.php';
+
+    $id_artista = $_GET['id_artista'] ?? null;
+
+    $where_clause = "";
+    if ($id_artista && is_numeric($id_artista)) {
+        $where_clause = " WHERE p.id_artista = " . $id_artista;
+    }
+
+    $sql = "SELECT 
+        p.nombre AS nombre_producto, 
+        p.descripcion, 
+        p.precio, 
+        p.ruta_imagen,
+        p.categoria,       
+        a.nombre AS nombre_artista,
+        a.ruta_banner     
+      FROM 
+        productos p 
+      JOIN 
+        artistas a ON p.id_artista = a.id_artista"
+        . $where_clause .
+        " ORDER BY
+        CASE p.categoria
+            WHEN 'Remeras' THEN 1   
+            WHEN 'Buzos' THEN 2     
+            WHEN 'Accesorios' THEN 3
+            ELSE 4
+        END,
+        CASE
+            WHEN p.categoria = 'Accesorios' THEN
+                CASE
+                    WHEN p.nombre LIKE '%Gorra%' THEN 1  -- Gorras
+                    WHEN p.nombre LIKE '%Cadena%' THEN 2 -- Cadenas
+                    WHEN p.nombre LIKE '%Vinilo%' THEN 3 -- Vinilos
+                    WHEN p.nombre LIKE '%Cuadro%' THEN 4 -- Cuadros
+                    ELSE 5 
+                END
+            ELSE 0
+        END,
+        p.nombre ASC";
+
+    $resultado = $conexion->query($sql);
+
+    $nombre_artista = "CATÁLOGO DE PRODUCTOS";
+    $ruta_banner = "";
+
+    if ($resultado && $resultado->num_rows > 0) {
+        $primera_fila = $resultado->fetch_assoc();
+        $nombre_artista = strtoupper($primera_fila['nombre_artista']);
+        $ruta_banner = $primera_fila['ruta_banner'] ?? '';
+        $resultado->data_seek(0);
+    }
+    ?>
+
     <nav>
         <div class="nav-izq">
             <div class="Menu-Desplegable">
@@ -64,43 +120,34 @@
         </div>
     </nav>
 
-    <div class="Banner-Principal">
-        <img src=" ../src/img/b369cc0516b45cb41db38e25ba185cf47e11f77c.png" alt="Logo-Trap">
-    </div>
+    <main id="Pagina-Artista">
+        <h1><?php echo $nombre_artista; ?></h1>
 
-    <div id="Carrousel">
-        <h6>Productos Recomendados</h6>
-
-        <div class="Carrousel-Flechas">
-            <i class="bi bi-caret-left-fill" id="btnIzq"></i>
-            <div class="Carrousel-Cont">
-                <div class="carrousel">
-                    <div class="item"><img src="" alt="Producto 1"></div>
-                    <div class="item"><img src="" alt="Producto 2"></div>
-                    <div class="item"><img src="" alt="Producto 3"></div>
-                    <div class="item"><img src="" alt="Producto 4"></div>
-                    <div class="item"><img src="" alt="Producto 5"></div>
-                    <div class="item"><img src="" alt="Producto 6"></div>
-                    <div class="item"><img src="" alt="Producto 7"></div>
-                    <div class="item"><img src="" alt="Producto 8"></div>
-                </div>
-            </div>
-            <i class="bi bi-caret-right-fill" id="btnDer"></i>
+        <div class="Banner-Artista">
+            <img src="<?php echo $ruta_banner; ?>" alt="Banner de <?php echo $nombre_artista; ?>">
         </div>
-    </div>
 
-    <p>Ver todo <i class="bi bi-chevron-down"></i></p>
+        <section id="Seccion-Productos">
+            <?php
+            if ($resultado && $resultado->num_rows > 0) {
+                while ($fila = $resultado->fetch_assoc()) {
+                    ?>
+                    <div id="Cont-Producto" class="Ropa"> <img src="<?php echo $fila['ruta_imagen']; ?>"
+                            alt="<?php echo $fila['nombre_producto']; ?>">
 
-    <section id="Seccion-Productos">
-        <div id="Cont-Producto">
-            <img src="(Ruta de la img)" alt="(Nombre del Producto)">
-
-            <div id="Info-Producto">
-                <p id="Nombre-P"></p>
-                <p id="Precio-P"></p>
+                        <div id="Info-Producto">
+                            <p id="nombre-p"><strong><?php echo $fila['nombre_producto']; ?></strong></p>
+                            <p id="info-p"><strong><?php echo $fila['descripcion']; ?></strong></p>
+                            <p id="precio-p"><strong>$<?php echo $fila['precio']; ?></p>
+                        </div>
+                        <?php
+                }
+            }
+            $conexion->close();
+            ?>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="Footer-Cont">
