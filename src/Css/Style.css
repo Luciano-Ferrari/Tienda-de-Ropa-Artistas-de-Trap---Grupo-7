@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+/*Página Inicial*/
+
+/* General */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background-color: #f3f3f3;
+    color: #000;
+    overflow-x: hidden;
+}
+
+/* Nav */
+
+nav {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin: 0;
+    gap: 930px;
+    padding: 0px 50px;
+}
+
+nav img {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-izq {
+    font-family: "Climate Crisis", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav-izq a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.nav-der {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.btn-nav-der {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    padding: 7px 40px;
+    color: white;
+    background-color: #000;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+/* Paneles laterales */
+.panel-izq,
+.panel-der {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 86vw;
+    background: #fff;
+    padding: 50px;
+    overflow: auto;
+    z-index: 1000;
+
+    opacity: 1;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        visibility 0s linear .35s;
+}
+
+.panel-izq {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.panel-der {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.panel-izq.active,
+.panel-der.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+.panel-izq h2,
+.panel-der h2 {
+    font-family: "Climate Crisis", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.panel-izq h5,
+.panel-der h5 {
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-der p {
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.Btn-Carrito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Btn-Pagar {
+    background-color: #505050;
+    color: white;
+    font-family: "Climate Crisis", sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.2s;
+}
+
+.Btn-Pagar:hover {
+    background-color: #2b2b2b;
+}
+
+.panel-izq ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-izq li {
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.panel-izq a {
+    font-size: 20px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.panel-izq a:hover {
+    text-decoration: underline;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Banner */
+.Banner-Principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    margin: 0;
+}
+
+.Banner-Principal img {
+    width: 678px;
+}
+
+#Carrousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Carrousel h6 {
+    font-family: "Bowlby One SC", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.Carrousel-Flechas {
+    display: flex;
+    align-items: center;
+}
+
+.Carrousel-Cont {
+    position: relative;
+    max-width: 1000px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.carrousel {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    transition: transform 0.5s ease;
+    padding: 10px;
+}
+
+.item {
+    flex: 0 0 calc(25% - 12px);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+}
+
+.item img {
+    width: 240px;
+    height: 140px;
+    border-radius: 10px;
+}
+
+#btnDer, #btnIzq {
+    color: #D9D9D9;
+    font-size: 35px;
+}
+
+/* Footer */
+
+footer {
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+}
+
+.Footer-Cont {
+    max-width: 1450px;
+    margin: auto;
+    padding: 50px;
+}
+
+.info-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 700px;
+    align-items: center;
+}
+
+.direccion {
+    padding: 0px 25px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-family: "Bowlby One SC", sans-serif;
+}
+
+.pais p {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.pais {
+    padding: 4px 30px 5px 80px;
+    border: 5px solid white;
+    border-radius: 60px;
+    color: white;
+}
+
+.Footer-Contacto {
+    font-family: "Bricolage Grotesque", sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 80px;
+    color: white;
+    gap: 700px;
+    align-items: center;
+}
+
+.redes img {
+    width: 40px;
+    margin: 10px;
+}
+
+.redes div {
+    display: flex;
+    align-items: center;
+    margin-bottom: -40px;
+}
+
+.redes {
+    font-size: 27px;
+}
+
+.logo-footer img {
+    width: 300px;
+}
+
+.copyright {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 200;
+    padding: 0px 60px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: white;
+}
