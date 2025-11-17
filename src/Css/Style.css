@@ -284,7 +284,6 @@ nav img {
     visibility: visible;
 }
 
-/* 📌 ——— TABLETS (≤ 900px) ——— */
 @media (max-width: 900px) {
 
     .panel-izq,
@@ -308,7 +307,6 @@ nav img {
     }
 }
 
-/* 📌 ——— MOBILE (≤ 600px) ——— */
 @media (max-width: 600px) {
 
     .panel-izq,
@@ -336,7 +334,6 @@ nav img {
     }
 }
 
-/* 📌 ——— MOBILE CHICO (≤ 400px) ——— */
 @media (max-width: 400px) {
 
     .panel-izq,
@@ -377,21 +374,18 @@ nav img {
     width: 678px;
 }
 
-/* Banner – pantallas medianas */
 @media (max-width: 1000px) {
     .Banner-Principal img {
         width: 500px;
     }
 }
 
-/* Banner – tablets */
 @media (max-width: 700px) {
     .Banner-Principal img {
         width: 380px;
     }
 }
 
-/* Banner – celulares */
 @media (max-width: 450px) {
     .Banner-Principal img {
         width: 280px;
@@ -460,7 +454,8 @@ nav img {
 
     }
 
-    .item, .item img {
+    .item,
+    .item img {
         height: 110px;
     }
 }
@@ -482,12 +477,13 @@ nav img {
         max-width: 520px;
     }
 
-    .item,.item img {
+    .item,
+    .item img {
         height: 100px;
     }
 
     .item {
-        flex: 0 0 calc(50% - 12px); 
+        flex: 0 0 calc(50% - 12px);
     }
 
     #btnDer,
@@ -501,7 +497,8 @@ nav img {
         max-width: 330px;
     }
 
-    .item, .item img {
+    .item,
+    .item img {
         height: 50px;
     }
 
@@ -509,6 +506,20 @@ nav img {
     #btnIzq {
         font-size: 24px;
     }
+}
+
+/*Seccion de ropa de Index*/
+#Ver-todo {
+    text-align: center;
+}
+
+#Ver-todo a {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 20px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.372);
+    color: black;
+    text-decoration: none;
 }
 
 /* Footer */
@@ -608,7 +619,7 @@ footer hr {
         padding: 40px 30px;
     }
 
-    .info-footer{
+    .info-footer {
         gap: 400px;
     }
 
@@ -631,7 +642,7 @@ footer hr {
         max-width: 1000px;
     }
 
-    .direccion{
+    .direccion {
         padding-left: 100px;
     }
 
@@ -668,7 +679,7 @@ footer hr {
         align-items: center;
     }
 
-    .Footer-Contacto{
+    .Footer-Contacto {
         padding: 15px;
     }
 
@@ -752,3 +763,82 @@ footer hr {
         max-width: 350px;
     }
 }
+
+/*Página Artista*/
+
+#Pagina-Artista {
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+#Pagina-Artista h1 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.Banner-Artista img {
+    width: 1400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+#Seccion-Productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+#Cont-Producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Cont-Producto img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 1px solid #000000;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+}
+
+#Celda-producto {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+}
+
+#Info-Producto {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+#nombre-p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+#info-p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+#precio-p {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+}
+
+/*Página Registro*/

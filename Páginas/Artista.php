@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <?php
     include '../includes/conexion.php';
 
@@ -146,15 +145,21 @@
             if ($resultado && $resultado->num_rows > 0) {
                 while ($fila = $resultado->fetch_assoc()) {
                     ?>
-                    <div id="Cont-Producto" class="Ropa"> <img src="<?php echo $fila['ruta_imagen']; ?>"
-                            alt="<?php echo $fila['nombre_producto']; ?>">
+                    <div id="Cont-Producto" class="Ropa">
 
-                        <div id="Info-Producto">
-                            <p id="nombre-p"><strong><?php echo $fila['nombre_producto']; ?></strong></p>
-                            <p id="info-p"><strong><?php echo $fila['descripcion']; ?></strong></p>
-                            <p id="precio-p"><strong>$<?php echo $fila['precio']; ?></p>
+                        <div id="Celda-producto">
+                            <img src="<?php echo $fila['ruta_imagen']; ?>" alt="<?php echo $fila['nombre_producto']; ?>">
+
+                            <div id="Info-Producto">
+                                <p id="nombre-p"><?php echo $fila['nombre_producto']; ?></p>
+                                <p id="info-p"><?php echo $fila['descripcion']; ?></p>
+                                <p id="precio-p">$<?php echo $fila['precio']; ?></p>
+                            </div>
                         </div>
-                        <?php
+
+                    </div> <!-- CIERRE DEL CONT-PRODUCTO -->
+
+                    <?php
                 }
             }
             $conexion->close();
