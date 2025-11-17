@@ -99,11 +99,11 @@
                         <li><a href="Artista.php?id_artista=8">Barderos</a></li>
                         <li><a href="Artista.php?id_artista=9">Modo Diablo</a></li>
                         <li><a href="Artista.php?id_artista=10">Wos</a></li>
-                        <li><a href="#">Todos</a></li>
+                        <li><a href="../Index.html">Todos</a></li>
                     </ul>
                 </aside>
             </div>
-            <h2><a href="../Páginas/Index.html">Inicio</a></h2>
+            <h2><a href="../Index.html">Inicio</a></h2>
         </div>
 
         <div class="nav-der">
@@ -138,7 +138,7 @@
         <h1><?php echo $nombre_artista; ?></h1>
 
         <div class="Banner-Artista">
-            <img src="<?php echo $ruta_banner; ?>" alt="Banner de <?php echo $nombre_artista; ?>">
+            <img src="<?php echo $ruta_banner; ?>" alt="Banner de <?php echo $nombre_artista; ?>" id="afa">
         </div>
 
         <section id="Seccion-Productos">

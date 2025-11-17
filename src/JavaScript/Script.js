@@ -1,3 +1,17 @@
+/*Java del Nav*/
+const nav = document.querySelector("nav");
+const navOffsetTop = nav.offsetTop;
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > navOffsetTop) {
+        nav.classList.add("nav-fixed");
+    } 
+    else {
+        nav.classList.remove("nav-fixed");
+    }
+});
+
+
 /*Java de Paneles Laterales*/
 
 document.addEventListener("DOMContentLoaded", () => {
