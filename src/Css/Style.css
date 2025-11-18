@@ -522,6 +522,12 @@ nav img {
     text-decoration: none;
 }
 
+#Seccion-Productos {
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
 /* Footer */
 
 footer {
@@ -935,7 +941,7 @@ footer hr {
     justify-content: center;
     gap: 12px;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
     transition: 0.2s ease;
 }
 
