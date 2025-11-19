@@ -1053,3 +1053,26 @@ footer hr {
     border-radius: 15px;
     box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.12);
 }
+
+.datos-producto-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+#nombre-p, #info-p{
+    font-family: "Bricolage Grotesque", sans-serif; 
+    font-weight: 400;
+    font-size: 50px;
+}
+
+#info-p {
+    margin-bottom: 20px;
+}
+
+#precio-p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+}
