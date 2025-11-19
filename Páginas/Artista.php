@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+include '../includes/conexion.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Ropa Artistas de Trap</title>
-    <link rel="stylesheet" href="../src/Css/Style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <script src="../src/JavaScript/Script.js" defer></script>
-</head>
+$products_per_page = 12;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
+$offset = ($page - 1) * $products_per_page;
 
-<body>
-    <?php
-    include '../includes/conexion.php';
+$id_artista = $_GET['id_artista'] ?? null;
+$where_clause = "";
+if ($id_artista && is_numeric($id_artista)) {
+    $where_clause = " WHERE p.id_artista = " . $id_artista;
+}
 
-    $products_per_page = 12;
-    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
-    $offset = ($page - 1) * $products_per_page;
-
-    $id_artista = $_GET['id_artista'] ?? null;
-    $where_clause = "";
-    if ($id_artista && is_numeric($id_artista)) {
-        $where_clause = " WHERE p.id_artista = " . $id_artista;
-    }
-
-    $count_sql = "SELECT COUNT(p.id_producto) AS total_products 
+$count_sql = "SELECT COUNT(p.id_producto) AS total_products 
               FROM productos p 
               JOIN artistas a ON p.id_artista = a.id_artista"
-        . $where_clause;
-    $count_result = $conexion->query($count_sql);
-    $total_products = $count_result->fetch_assoc()['total_products'] ?? 0;
-    $total_pages = ceil($total_products / $products_per_page);
+    . $where_clause;
+$count_result = $conexion->query($count_sql);
+$total_products = $count_result->fetch_assoc()['total_products'] ?? 0;
+$total_pages = ceil($total_products / $products_per_page);
 
-    $sql = "SELECT DISTINCT 
+$sql = "SELECT DISTINCT 
         p.id_producto,     
         p.nombre AS nombre_producto, 
         p.descripcion, 
@@ -45,9 +32,9 @@
         productos p 
       JOIN 
         artistas a ON p.id_artista = a.id_artista"
-        . $where_clause .
-        " GROUP BY p.id_producto "
-        . " ORDER BY
+    . $where_clause .
+    " GROUP BY p.id_producto "
+    . " ORDER BY
         CASE p.categoria
             WHEN 'Remeras' THEN 1   
             WHEN 'Buzos' THEN 2     
@@ -66,21 +53,34 @@
             ELSE 0 
         END,
         p.nombre ASC"
-        . " LIMIT " . $products_per_page . " OFFSET " . $offset;
+    . " LIMIT " . $products_per_page . " OFFSET " . $offset;
 
-    $resultado = $conexion->query($sql);
+$resultado = $conexion->query($sql);
 
-    $nombre_artista = "CATÁLOGO DE PRODUCTOS";
-    $ruta_banner = "";
+$nombre_artista = "CATÁLOGO DE PRODUCTOS";
+$ruta_banner = "";
 
-    if ($resultado && $resultado->num_rows > 0) {
-        $primera_fila = $resultado->fetch_assoc();
-        $nombre_artista = strtoupper($primera_fila['nombre_artista']);
-        $ruta_banner = $primera_fila['ruta_banner'] ?? '';
-        $resultado->data_seek(0);
-    }
-    ?>
+if ($resultado && $resultado->num_rows > 0) {
+    $primera_fila = $resultado->fetch_assoc();
+    $nombre_artista = strtoupper($primera_fila['nombre_artista']);
+    $ruta_banner = $primera_fila['ruta_banner'] ?? '';
+    $resultado->data_seek(0);
+}
+?>
 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa Artistas de Trap</title>
+    <link rel="stylesheet" href="../src/Css/Style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="../src/JavaScript/Script.js" defer></script>
+</head>
+
+<body>
     <nav>
         <div class="nav-izq">
             <div class="Menu-Desplegable">
@@ -146,18 +146,20 @@
                 while ($fila = $resultado->fetch_assoc()) {
                     ?>
                     <div id="Cont-Producto" class="Ropa">
+                        <a href="Producto.php?id_producto=<?php echo $fila['id_producto']; ?>">
 
-                        <div id="Celda-producto">
-                            <img src="<?php echo $fila['ruta_imagen']; ?>" alt="<?php echo $fila['nombre_producto']; ?>">
+                            <div id="Celda-producto">
+                                <img src="<?php echo $fila['ruta_imagen']; ?>" alt="<?php echo $fila['nombre_producto']; ?>">
 
-                            <div id="Info-Producto">
-                                <p id="nombre-p"><?php echo $fila['nombre_producto']; ?></p>
-                                <p id="info-p"><?php echo $fila['descripcion']; ?></p>
-                                <p id="precio-p">$<?php echo $fila['precio']; ?></p>
+                                <div id="Info-Producto">
+                                    <p id="nombre-p"><?php echo $fila['nombre_producto']; ?></p>
+                                    <p id="info-p"><?php echo $fila['descripcion']; ?></p>
+                                    <p id="precio-p">$<?php echo $fila['precio']; ?></p>
+                                </div>
                             </div>
-                        </div>
 
-                    </div> <!-- CIERRE DEL CONT-PRODUCTO -->
+                        </a> 
+                    </div>
 
                     <?php
                 }
