@@ -97,6 +97,7 @@ $conexion->close();
       </aside>
     </div>
   </nav>
+  
   <main id="Detalle-Producto-Contenedor">
     <section class="info-principal-producto">
       <div class="imagen-producto-wrapper">

@@ -1031,3 +1031,25 @@ footer hr {
     font-weight: 700;
     font-size: 17px;
 }
+
+/*Página de producto*/
+
+#Detalle-Producto-Contenedor {
+    background-color: #f0eeee;
+    padding: 100px;
+}
+
+.info-principal-producto {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    gap: 80px;
+    padding: 40px;
+}
+
+.imagen-producto-wrapper img{
+    width: 650px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.12);
+}
