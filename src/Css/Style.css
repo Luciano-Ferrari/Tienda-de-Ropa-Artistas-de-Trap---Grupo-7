@@ -847,6 +847,77 @@ footer hr {
     font-size: 25px;
 }
 
+@media (max-width: 1023px) and (min-width: 768px) {
+    #Seccion-Productos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    #Cont-Producto img {
+        width: 180px;
+        height: 180px;
+    }
+
+    #nombre-p, #info-p {
+        font-size: 18px;
+    }
+
+    #precio-p {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 767px) {
+    #Seccion-Productos {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    #Cont-Producto {
+        align-items: center;
+    }
+
+    #Cont-Producto img {
+        width: 160px;
+        height: 160px;
+    }
+
+    #nombre-p, #info-p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #precio-p {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #Celda-producto {
+        align-items: center;
+    }
+
+    #Info-Producto {
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1440px) {
+    #Seccion-Productos {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 45px;
+    }
+
+    #Cont-Producto img {
+        width: 230px;
+        height: 230px;
+    }
+
+    #precio-p {
+        font-size: 28px;
+    }
+}
+
 /*Página Registro*/
 
 #Inicio-Sesion {
