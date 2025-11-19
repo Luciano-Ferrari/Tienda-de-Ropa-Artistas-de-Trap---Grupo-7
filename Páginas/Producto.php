@@ -6,8 +6,8 @@ $id_producto = $_GET['id_producto'] ?? null;
 $nombre_producto = "Producto No Encontrado";
 $precio = "0.00";
 $ruta_imagen = "../src/img/default.png";
-$texto_acciones = ""; 
-$producto_info = "Información no disponible."; 
+$texto_acciones = "";
+$producto_info = "Información no disponible.";
 
 if ($id_producto && is_numeric($id_producto)) {
   $sql = "SELECT 
