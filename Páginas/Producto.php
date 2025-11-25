@@ -100,7 +100,7 @@ $conexion->close();
   
   <main id="Detalle-Producto-Contenedor">
     <section class="info-principal-producto">
-      <div class="imagen-producto-wrapper">
+      <div class="imagen-producto">
         <img src="<?php echo $ruta_imagen; ?>" alt="<?php echo $nombre_producto; ?>" class="imagen-producto">
       </div>
 

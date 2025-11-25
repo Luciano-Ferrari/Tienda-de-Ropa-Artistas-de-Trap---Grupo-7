@@ -1060,8 +1060,9 @@ footer hr {
     padding: 40px;
 }
 
-.imagen-producto-wrapper img {
+.imagen-producto img {
     width: 650px;
+    height: 650px;
     border: 1px solid #000000;
     border-radius: 15px;
     box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.12);
