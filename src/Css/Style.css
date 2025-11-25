@@ -832,7 +832,6 @@ footer hr {
 #nombre-p {
     margin: 0;
     padding: 0;
-    font-size: 10px;
 }
 
 #info-p {
@@ -1061,18 +1060,24 @@ footer hr {
     align-items: center;
 }
 
-#nombre-p, #info-p{
+#nombre-p-detalle, #info-p-detalle{
     font-family: "Bricolage Grotesque", sans-serif; 
     font-weight: 400;
     font-size: 50px;
+    color: black;
+    text-decoration: none;
 }
 
-#info-p {
+#info-p-detalle {
     margin-bottom: 20px;
+    color: black;
+    text-decoration: none;
 }
 
-#precio-p {
+#precio-p-detalle {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     font-size: 20px;
+    color: black;
+    text-decoration: none;
 }

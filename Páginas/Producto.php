@@ -106,9 +106,9 @@ $conexion->close();
 
       <div class="datos-producto-acciones">
         <div id="Info-Producto">
-          <p id="nombre-p"><?php echo $nombre_producto; ?></p>
-          <p id="info-p"><?php echo $producto_info; ?></p>
-          <p id="precio-p">$<?php echo $precio; ?></p>
+          <p id="nombre-p-detalle"><?php echo $nombre_producto; ?></p>
+          <p id="info-p-detalle"><?php echo $producto_info; ?></p>
+          <p id="precio-p-detalle">$<?php echo $precio; ?></p>
         </div>
 
         <div class="acciones-producto">
