@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2025 a las 19:46:20
+-- Tiempo de generación: 25-11-2025 a las 20:24:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -95,8 +95,6 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (23, 1, 'Vinilo de Duki', 'Ameri', 80.00, '../src/img/Vinilo-Duki-4.png', 'Accesorios'),
 (24, 1, 'Cuadro de Duki', '24', 30.00, '../src/img/Cuadro-Duki-2.png', 'Accesorios'),
 (31, 1, 'Sticker Duki Logo', 'Pack de 5', 2.00, '../src/img/sticker-duki-3.png', 'Accesorios'),
-(32, 1, 'Vinilo Duki \"Temporada de Reggaeton\"', 'Doble LP', 90.00, '../src/img/Vinilo-Duki-7.png', 'Accesorios'),
-(33, 1, 'Vinilo Duki \"Super Sangre Joven\"', 'LP Colores', 90.00, '../src/img/Vinilo-Duki-5.png', 'Accesorios'),
 (34, 1, 'Sticker Duki \"Jesus\"', 'Vinilo', 1.00, '../src/img/sticker-duki-2.png', 'Accesorios'),
 (37, 1, 'Remera de Duki ', '5202', 20.00, '../src/img/ropa-Duki-7.png', 'Remeras'),
 (38, 1, 'Remera de Duki', 'Super Sangre Joven', 20.00, '../src/img/ropa-Duki-6.png', 'Remeras'),
@@ -109,7 +107,17 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (45, 1, 'Vinilo de Duki', 'Antes de Ameri', 80.00, '../src/img/Vinilo-Duki-7.png', 'Accesorios'),
 (46, 1, 'Vinilo de Duki', 'Desde el Fin del Mundo', 80.00, '../src/img/Vinilo-Duki-5.png', 'Accesorios'),
 (47, 1, 'Cuadro de Duki', 'Ameri', 30.00, '../src/img/Cuadro-Duki-3.png', 'Accesorios'),
-(48, 1, 'Llavero Duki', 'Ameri', 8.00, '../src/img/Llavero-Duki-1.png', 'Accesorios');
+(48, 1, 'Llavero Duki', 'Ameri', 8.00, '../src/img/Llavero-Duki-1.png', 'Accesorios'),
+(49, 1, 'Póster/Cuadro AMERI', 'Cuadro decorativo con la portada y tracklist del álbum AMERI.', 99.99, 'Cuadro-Duki-3.png', 'Cuadro'),
+(50, 1, 'Póster/Cuadro Antes de Ameri', 'Cuadro decorativo con la portada y tracklist del álbum Antes de Ameri.', 99.99, 'Cuadro-Duki-1.png', 'Cuadro'),
+(51, 1, 'Portada Vinilo AMERI', 'Diseño de portada del álbum AMERI con Duki cayendo.', 79.99, 'Vinilo-Duki-4.png', 'Vinilo'),
+(52, 1, 'Portada Vinilo Antes de Ameri', 'Diseño de portada del álbum Antes de Ameri (Planeta, Rayo Láser).', 79.99, 'Vinilo-Duki-7.png', 'Vinilo'),
+(53, 1, 'Portada Vinilo Desde el Fin del Mundo', 'Diseño de portada del álbum Desde el Fin del Mundo (Mapa dibujado).', 79.99, 'Vinilo-Duki-5.jpg', 'Vinilo'),
+(54, 1, 'Portada Vinilo 5202 (Mixtape)', 'Diseño de portada del Mixtape 5202 (Efecto Glitch, Códigos).', 79.99, 'Vinilo-Duki-3.png', 'Vinilo'),
+(55, 1, 'Portada Vinilo Súper Sangre Joven', 'Diseño de portada del álbum Súper Sangre Joven (Estilo Dragon Ball).', 79.99, 'Vinilo-Duki-2.jpg', 'Vinilo'),
+(56, 1, 'Sticker Duki Holográfico', 'Sticker con retrato de Duki en acabado iridiscente/holográfico.', 19.99, 'sticker-duki-2.jpg', 'Sticker'),
+(57, 1, 'Sticker Duki Retrato', 'Sticker con retrato a color de Duki (Camisa negra).', 19.99, 'sticker-duki-3.jpg', 'Sticker'),
+(58, 1, 'Llavero Logo Duki', 'Llavero metálico con el diseño del logo geométrico de Duki.', 29.99, 'Llavero-Duki-1.png', 'Llavero');
 
 --
 -- Índices para tablas volcadas
@@ -142,7 +150,7 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Restricciones para tablas volcadas

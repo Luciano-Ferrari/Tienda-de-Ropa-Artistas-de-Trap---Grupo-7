@@ -164,12 +164,49 @@ if ($resultado && $resultado->num_rows > 0) {
                     <?php
                 }
             }
-            $conexion->close();
             ?>
-            </div>
-        </section>
-    </main>
+        </section> <?php 
+        $max_visible_page = 2; 
+        $num_pages_to_display = min($total_pages, $max_visible_page);
+        
+        if ($num_pages_to_display > 0) { 
+        ?>
+            <div class="pagination-container">
+                <nav aria-label="Navegación de productos">
+                    <ul class="pagination">
+                        <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
+                            <a class="page-link" 
+                               href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page - 1; ?>" 
+                               aria-label="Anterior">
+                                <span aria-hidden="true">&lt;</span>
+                            </a>
+                        </li>
 
+                        <?php
+                        for ($i = 1; $i <= $num_pages_to_display; $i++) {
+                            ?>
+                            <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                                <a class="page-link" 
+                                   href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $i; ?>">
+                                    <?php echo $i; ?>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
+
+                        <li class="page-item <?php echo ($page >= $max_visible_page || $page >= $total_pages) ? 'disabled' : ''; ?>">
+                            <a class="page-link" 
+                               href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page + 1; ?>" 
+                               aria-label="Siguiente">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        <?php } ?>
+        </main>
     <footer>
         <div class="Footer-Cont">
             <div class="info-footer">
@@ -217,3 +254,6 @@ if ($resultado && $resultado->num_rows > 0) {
 </body>
 
 </html>
+<?php 
+$conexion->close();
+?>
