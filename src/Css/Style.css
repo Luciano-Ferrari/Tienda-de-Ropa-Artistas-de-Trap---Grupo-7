@@ -805,6 +805,11 @@ footer hr {
     align-items: center;
 }
 
+#Cont-Producto a {
+    text-decoration: none;
+    color: black;
+}
+
 #Cont-Producto img {
     width: 200px;
     height: 200px;
@@ -819,6 +824,13 @@ footer hr {
     display: flex;
     text-align: left;
     flex-direction: column;
+}
+
+#Info-Producto a,
+#Info-Producto p {
+    text-decoration: none;
+    color: black;
+    display: block;
 }
 
 #Info-Producto {
@@ -857,7 +869,8 @@ footer hr {
         height: 180px;
     }
 
-    #nombre-p, #info-p {
+    #nombre-p,
+    #info-p {
         font-size: 18px;
     }
 
@@ -881,7 +894,8 @@ footer hr {
         height: 160px;
     }
 
-    #nombre-p, #info-p {
+    #nombre-p,
+    #info-p {
         font-size: 16px;
         text-align: center;
     }
@@ -1046,7 +1060,7 @@ footer hr {
     padding: 40px;
 }
 
-.imagen-producto-wrapper img{
+.imagen-producto-wrapper img {
     width: 650px;
     border: 1px solid #000000;
     border-radius: 15px;
@@ -1060,8 +1074,9 @@ footer hr {
     align-items: center;
 }
 
-#nombre-p-detalle, #info-p-detalle{
-    font-family: "Bricolage Grotesque", sans-serif; 
+#nombre-p-detalle,
+#info-p-detalle {
+    font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 400;
     font-size: 50px;
     color: black;
