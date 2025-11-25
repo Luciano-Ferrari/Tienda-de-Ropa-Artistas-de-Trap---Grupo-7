@@ -803,6 +803,7 @@ footer hr {
 #Cont-Producto {
     display: flex;
     flex-direction: column;
+    width: fit-content;
 }
 
 #Cont-Producto a {
@@ -818,6 +819,12 @@ footer hr {
     border: 1px solid #000000;
     background: #fff;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#Cont-Producto:hover img {
+    transform: scale(1.07);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.20);
 }
 
 #Celda-producto {
@@ -831,7 +838,13 @@ footer hr {
     text-decoration: none;
     color: black;
     display: block;
+    transition: color 0.25s ease;
 }
+
+#Info-Producto:hover a, #Info-Producto:hover p {
+    color: #414141;
+}
+
 
 #Info-Producto {
     font-family: "Bricolage Grotesque", sans-serif;
