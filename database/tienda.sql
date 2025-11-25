@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2025 a las 20:24:32
+-- Tiempo de generación: 25-11-2025 a las 21:31:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,9 +41,9 @@ INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
 (1, 'Duki', '../src/img/Duki.png'),
 (2, 'YSY A', NULL),
 (3, 'Trueno', NULL),
-(4, 'Neo Pistea', NULL),
-(5, 'C.R.O.', NULL),
-(6, 'Khea', NULL),
+(4, 'Neo Pistea', 'HTML'),
+(5, 'C.R.O.', '../src/img/CRO.jpg'),
+(6, 'Khea', 'HTML'),
 (7, 'Milo j', NULL),
 (8, 'Barderos', NULL),
 (9, 'Modo Diablo', '../src/img/ModoDiablo.png'),
@@ -91,7 +91,7 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (19, 1, 'Gorra de Duki', 'Duki', 10.00, '../src/img/gorra-Duki-1.png', 'Accesorios'),
 (20, 1, 'Cuadro de Duki', 'Antes de Ameri', 30.00, '../src/img/Cuadro-Duki-1.png', 'Accesorios'),
 (21, 1, 'Vinilo de Duki', '5202', 80.00, '../src/img/Vinilo-Duki-3.png', 'Accesorios'),
-(22, 1, 'Remera de C.R.O', 'Mi Chain de Roque', 20.00, '../src/img/ropa-Duki-1.png', 'Remeras'),
+(22, 1, 'Remera de Modo Diablo', 'Mi Chain de Roque', 20.00, '../src/img/ropa-Duki-1.png', 'Remeras'),
 (23, 1, 'Vinilo de Duki', 'Ameri', 80.00, '../src/img/Vinilo-Duki-4.png', 'Accesorios'),
 (24, 1, 'Cuadro de Duki', '24', 30.00, '../src/img/Cuadro-Duki-2.png', 'Accesorios'),
 (31, 1, 'Sticker Duki Logo', 'Pack de 5', 2.00, '../src/img/sticker-duki-3.png', 'Accesorios'),
@@ -117,7 +117,33 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (55, 1, 'Portada Vinilo Súper Sangre Joven', 'Diseño de portada del álbum Súper Sangre Joven (Estilo Dragon Ball).', 79.99, 'Vinilo-Duki-2.jpg', 'Vinilo'),
 (56, 1, 'Sticker Duki Holográfico', 'Sticker con retrato de Duki en acabado iridiscente/holográfico.', 19.99, 'sticker-duki-2.jpg', 'Sticker'),
 (57, 1, 'Sticker Duki Retrato', 'Sticker con retrato a color de Duki (Camisa negra).', 19.99, 'sticker-duki-3.jpg', 'Sticker'),
-(58, 1, 'Llavero Logo Duki', 'Llavero metálico con el diseño del logo geométrico de Duki.', 29.99, 'Llavero-Duki-1.png', 'Llavero');
+(58, 1, 'Llavero Logo Duki', 'Llavero metálico con el diseño del logo geométrico de Duki.', 29.99, 'Llavero-Duki-1.png', 'Llavero'),
+(59, 2, 'Remera Chain Roquero (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Mi Chain de Roque\" (Duki x C.R.O.).', 59.99, 'Remera-cro-chainroque.png', 'Remera'),
+(60, 2, 'Remera Fuck Luv (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Fuck Luv\" (Duki x C.R.O.), diseño glitch.', 59.99, 'Remera-cro-fucklove.jpg', 'Remera'),
+(61, 2, 'Remera Retrato C.R.O. (Gorro)', 'Remera negra oversized con retrato en blanco y negro de C.R.O. con gorro.', 64.99, 'Remera-cro-cara.jpg', 'Remera'),
+(62, 2, 'Remera Retrato C.R.O. (Gris)', 'Remera gris con foto de C.R.O. en musculosa y gorra.', 64.99, 'Remera-cro-gris.png', 'Remera'),
+(63, 2, 'Remera Retrato C.R.O. (Tiempo)', 'Remera negra con retrato en blanco y negro de C.R.O. fumando y usando gorra.', 59.99, 'Remera-cro-tiempo.png', 'Remera'),
+(64, 2, 'Remera C.R.O. Alas', 'Remera negra con logo \"C.R.O.\" blanco, alas de demonio y halo.', 54.99, 'Remera-cro-alas.png', 'Remera'),
+(65, 2, 'Remera C.R.O. Trucha (Logo Cadena)', 'Remera negra con diseño de cadena y dije de logo \"C.R.O.\" alado.', 54.99, 'Remera-cro-trucha.png', 'Remera'),
+(66, 2, 'Crop Top C.R.O. Luna', 'Remera corta para mujer con diseño de luna y estrellas \"C.R.O.\". ', 49.99, 'Remera-cro-mujer.png', 'Remera'),
+(67, 2, 'Remera C.R.O. Smiley Nirvana', 'Remera negra con diseño de smiley face alado y gorro con logo C.R.O. debajo (Estilo Nirvana).', 59.99, 'Remera-cro-nirvana.png', 'Remera'),
+(68, 9, 'Remera Chain Roquero (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Mi Chain de Roque\" (Duki x C.R.O.).', 59.99, 'Remera-cro-chainroque.png', 'Remera'),
+(69, 9, 'Remera Fuck Luv (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Fuck Luv\" (Duki x C.R.O.), diseño glitch.', 59.99, 'Remera-cro-fucklove.jpg', 'Remera'),
+(70, 9, 'Remera Retrato C.R.O. (Gorro)', 'Remera negra oversized con retrato en blanco y negro de C.R.O. con gorro.', 64.99, 'Remera-cro-cara.jpg', 'Remera'),
+(71, 9, 'Remera Retrato C.R.O. (Gris)', 'Remera gris con foto de C.R.O. en musculosa y gorra.', 64.99, 'Remera-cro-gris.png', 'Remera'),
+(72, 9, 'Remera Retrato C.R.O. (Tiempo)', 'Remera negra con retrato en blanco y negro de C.R.O. fumando y usando gorra.', 59.99, 'Remera-cro-tiempo.png', 'Remera'),
+(73, 9, 'Remera C.R.O. Alas', 'Remera negra con logo \"C.R.O.\" blanco, alas de demonio y halo.', 54.99, 'Remera-cro-alas.png', 'Remera'),
+(74, 9, 'Remera C.R.O. Trucha (Logo Cadena)', 'Remera negra con diseño de cadena y dije de logo \"C.R.O.\" alado.', 54.99, 'Remera-cro-trucha.png', 'Remera'),
+(75, 9, 'Crop Top C.R.O. Luna', 'Remera corta para mujer con diseño de luna y estrellas \"C.R.O.\". ', 49.99, 'Remera-cro-mujer.png', 'Remera'),
+(77, 5, 'Remera de C.R.O', 'Nirvana', 20.00, '../src/img/Remera-cro-nirvana.png', 'Remera'),
+(78, 5, 'Remera de C.R.O', 'Alas', 20.00, '../src/img/Remera-cro-alas.png', 'Remera'),
+(79, 5, 'Remera de C.R.O', 'Fuck love', 20.00, '../src/img/Remera-cro-fucklove.png', 'Remera'),
+(80, 5, 'Remera de C.R.O', 'Tiempo', 20.00, '../src/img/Remera-cro-tiempo.png', 'Remera'),
+(81, 5, 'Remera de C.R.O', 'Cara', 20.00, '../src/img/Remera-cro-cara.png', 'Remera'),
+(82, 5, 'Remera de C.R.O', 'Gris', 20.00, '../src/img/Remera-cro-gris.png', 'Remera'),
+(83, 5, 'Remera de C.R.O', 'Trucha', 20.00, '../src/img/Remera-cro-trucha.png', 'Remera'),
+(84, 5, 'Remera de C.R.O', 'Mujer', 20.00, '../src/img/Remera-cro-mujer.png', 'Remera'),
+(85, 5, 'Remera de C.R.O', 'Emo', 20.00, '../src/img/Remera-cro-emo.png', 'Remera');
 
 --
 -- Índices para tablas volcadas
@@ -150,7 +176,7 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- Restricciones para tablas volcadas
