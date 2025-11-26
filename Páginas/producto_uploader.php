@@ -1,9 +1,6 @@
 <?php
-// Incluir tu archivo de conexión.
-// NO ASIGNAMOS EL RESULTADO DE INCLUDE. La variable $conexion debe crearse DENTRO de conexion.php.
 @include '../includes/conexion.php';
 
-// Lista de Artistas (Hardcodeada para el formulario temporal)
 $artistas = [
     1 => 'Duki',
     2 => 'YSY A',
@@ -17,12 +14,10 @@ $artistas = [
     10 => 'Wos'
 ];
 
-// Ruta de destino de las imágenes (Debe existir y tener permisos de escritura)
 $target_dir = "../src/img/";
 
 $mensaje_resultado = "";
 
-// Verificamos si la conexión se estableció correctamente (variable $conexion existe y es un objeto mysqli)
 $conexion_establecida = isset($conexion) && $conexion instanceof \mysqli && $conexion->connect_error === null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,13 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$conexion_establecida) {
         $mensaje_resultado = "<p style='color:red;'>FATAL ERROR: La conexión a la base de datos falló. Verifica conexion.php</p>";
     } else {
-        // --- 1. Obtener datos del formulario ---
         $id_artista = filter_input(INPUT_POST, 'id_artista', FILTER_VALIDATE_INT);
         $nombre_base = filter_input(INPUT_POST, 'nombre_base', FILTER_SANITIZE_STRING);
         $categoria = filter_input(INPUT_POST, 'categoria', FILTER_SANITIZE_STRING);
         $precio = filter_input(INPUT_POST, 'precio', FILTER_VALIDATE_FLOAT);
 
-        // Validaciones básicas
         if (!$id_artista || !$nombre_base || !$categoria || $precio === false) {
             $mensaje_resultado = "<p style='color:red;'>Error: Datos de formulario incompletos o inválidos.</p>";
         } elseif (!isset($_FILES['imagenes'])) {
@@ -46,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imagenes_subidas = 0;
             $errores = [];
 
-            // --- 2. Procesar Múltiples Archivos ---
             $file_count = count($_FILES['imagenes']['name']);
 
             for ($i = 0; $i < $file_count; $i++) {
@@ -60,35 +52,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $target_file = $target_dir . $file_name;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-                // --- 3. Validación y Subida ---
-
-                // **CORRECCIÓN:** Se ha COMENTADO la verificación de 'file_exists' para permitir la sobrescritura.
-                /*
-                if (file_exists($target_file)) {
-                    $errores[] = "Archivo ya existe: $file_name. Fue omitido. (Ruta: " . $target_file . ")";
-                    continue;
-                }
-                */
-
-                // Mueve el archivo a la carpeta de destino (ESSENCIAL)
                 if (move_uploaded_file($tmp_name, $target_file)) {
 
-                    // --- 4. Extracción de Descripción desde el Nombre de Archivo ---
                     $nombre_sin_extension = pathinfo($file_name, PATHINFO_FILENAME);
                     $partes = explode('-', $nombre_sin_extension);
 
-                    // Asume que la descripción es la última parte
                     $descripcion = (count($partes) >= 3) ? $partes[2] : $nombre_sin_extension;
 
-                    // Genera la ruta a guardar en la DB
                     $ruta_db = "../src/img/" . $file_name;
 
-                    // --- 5. Inserción en la DB (Usando Prepared Statements) ---
                     $stmt = $conexion->prepare("INSERT INTO productos 
                         (id_artista, nombre, descripcion, precio, ruta_imagen, categoria) 
                         VALUES (?, ?, ?, ?, ?, ?)");
 
-                    // Vincula los parámetros (i: integer, s: string, d: double)
                     $stmt->bind_param(
                         "issdss",
                         $id_artista,
@@ -118,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 6. Cierra la conexión si existe y es un objeto mysqli
     if ($conexion_establecida)
         $conexion->close();
 }
