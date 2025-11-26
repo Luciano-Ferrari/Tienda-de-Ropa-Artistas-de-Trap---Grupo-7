@@ -87,9 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            $mensaje_resultado = "<p style='color:green;'>ÉXITO: $imagenes_subidas productos insertados.</p>";
+            $mensaje_resultado = "<p>ÉXITO: $imagenes_subidas productos insertados.</p>";
             if (!empty($errores)) {
-                $mensaje_resultado .= "<p style='color:orange;'>Advertencias/Errores:</p><ul><li>" . implode("</li><li>", $errores) . "</li></ul>";
+                $mensaje_resultado .= "<p>Advertencias/Errores:</p><ul><li>" . implode("</li><li>", $errores) . "</li></ul>";
             }
         }
     }
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <title>Cargador Acelerado de Productos</title>
+    <title>Cargador de Productos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -169,42 +169,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="container">
-        <h2>Cargador de Productos Temporal</h2>
-
         <?php echo $mensaje_resultado; ?>
 
         <form method="POST" enctype="multipart/form-data">
-
-            <h3>Datos Fijos (Aplicables a todos los archivos subidos)</h3>
-
             <label for="id_artista">Artista:</label>
             <select name="id_artista" id="id_artista" required>
-                <option value="">-- Seleccionar Artista --</option>
+                <option value="">Seleccionar Artista</option>
                 <?php foreach ($artistas as $id => $nombre): ?>
                     <option value="<?php echo $id; ?>"><?php echo $nombre; ?></option>
                 <?php endforeach; ?>
             </select>
 
-            <label for="categoria">Categoría (Clasificación Principal - Ej: Remeras, Buzos, Accesorios):</label>
+            <label for="categoria">Categoría</label>
             <select name="categoria" id="categoria" required>
-                <option value="">-- Seleccionar Categoría --</option>
-                <option value="Remeras">Remeras (Prioridad 1)</option>
-                <option value="Buzos">Buzos (Prioridad 2)</option>
-                <option value="Accesorios">Accesorios (Prioridad 3: Vinilos, Gorras, Stickers, etc.)</option>
+                <option value="">Seleccionar Categoría</option>
+                <option value="Remeras">Remeras</option>
+                <option value="Buzos">Buzos</option>
+                <option value="Accesorios">Accesorios</option>
             </select>
 
-            <label for="nombre_base">Nombre Base del Producto (Ej: Remera de C.R.O., Vinilo de YSY A):</label>
+            <label for="nombre_base">Nombre Base del Producto</label>
             <input type="text" name="nombre_base" id="nombre_base" required placeholder="Ej: Remera de Trueno">
 
-            <label for="precio">Precio (Ej: 20.00 para Remera, 80.00 para Vinilo):</label>
+            <label for="precio">Precio:</label>
             <input type="number" step="0.01" name="precio" id="precio" required value="20.00">
 
             <h3>Archivos</h3>
-            <p><strong>Convención de Nombres:</strong> La descripción se tomará de la última parte del nombre de
-                archivo. Ejemplo: `Tipo-Artista-**Descripcion.ext**`</p>
 
             <div class="file-upload">
-                <label for="imagenes">Seleccionar Fotos de Producto (Múltiples Archivos):</label>
+                <label for="imagenes">Seleccionar Fotos de Producto:</label>
                 <input type="file" name="imagenes[]" id="imagenes" accept="image/png, image/jpeg" multiple required>
             </div>
 
