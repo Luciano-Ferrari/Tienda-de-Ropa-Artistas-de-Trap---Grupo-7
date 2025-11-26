@@ -822,23 +822,29 @@ footer hr {
 }
 
 .Banner-Artista img {
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
   height: 500px;
   object-fit: cover;
   border-radius: 15px;
   margin-bottom: 40px;
+  display: block;
 }
+
 
 #Seccion-Productos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 35px;
+  justify-items: center;
+  justify-content: center;
 }
 
 #Cont-Producto {
+  width: 240px;
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  align-items: center;
 }
 
 #Cont-Producto a {
@@ -847,7 +853,7 @@ footer hr {
 }
 
 #Cont-Producto img {
-  width: 200px;
+  width: 100%;
   height: 200px;
   object-fit: contain;
   border-radius: 15px;
@@ -959,7 +965,7 @@ footer hr {
 
 .pagination .page-item.disabled .page-link,
 .pagination .page-item.disabled .page-link:hover {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .page-item {
@@ -969,6 +975,7 @@ footer hr {
 @media (max-width: 1023px) and (min-width: 768px) {
   #Seccion-Productos {
     grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
     gap: 25px;
   }
 
@@ -985,12 +992,31 @@ footer hr {
   #precio-p {
     font-size: 22px;
   }
+
+  .Nav-de-abajo {
+    padding: 0px 25px;
+  }
+
+  .pagination {
+    gap: 25px;
+  }
+
+  .pagination .page-link {
+    font-size: 24px;
+  }
+
+  .pagination .page-item .page-link span {
+    font-size: 30px;
+  }
+
+  .Banner-Artista img {
+    height: 420px;
+  }
 }
 
 @media (max-width: 767px) {
   #Seccion-Productos {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
 
   #Cont-Producto {
@@ -1020,6 +1046,26 @@ footer hr {
   #Info-Producto {
     padding-left: 0;
     text-align: center;
+  }
+
+  .pagination-container {
+    margin: 30px 0;
+  }
+
+  .pagination {
+    gap: 20px;
+  }
+
+  .pagination .page-link {
+    font-size: 22px;
+  }
+
+  .pagination .page-item .page-link span {
+    font-size: 28px;
+  }
+
+  .Banner-Artista img {
+    height: 360px;
   }
 }
 
