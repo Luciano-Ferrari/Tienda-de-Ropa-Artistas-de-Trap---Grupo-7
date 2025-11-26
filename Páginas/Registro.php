@@ -1,4 +1,4 @@
-<?php session_start(); ?> 
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
-    
+
     <style>
         .mensaje-registro {
             padding: 10px;
@@ -18,11 +18,13 @@
             font-weight: bold;
             text-align: center;
         }
+
         .mensaje-exito {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
+
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
@@ -33,11 +35,65 @@
 
 <body>
     <nav>
-        </nav>
+        <div class="nav-izq">
+            <div class="Menu-Desplegable">
+                <img src="../src/img/82cb671fe93aec295a64e6810373d6dba70ff39c.png" alt="Menú" id="btnMenu">
+                <aside id="menuLateral" class="panel-izq">
+                    <h2>Artistas</h2>
+                    <ul>
+                        <li><a href="Artista.php?id_artista=1">Duki</a></li>
+                        <li><a href="Artista.php?id_artista=2">YSY A</a></li>
+                        <li><a href="Artista.php?id_artista=3">Trueno</a></li>
+                        <li><a href="Artista.php?id_artista=4">Neo Pistea</a></li>
+                        <li><a href="Artista.php?id_artista=5">C.R.O.</a></li>
+                        <li><a href="Artista.php?id_artista=6">Khea</a></li>
+                        <li><a href="Artista.php?id_artista=7">Milo j</a></li>
+                        <li><a href="Artista.php?id_artista=8">Barderos</a></li>
+                        <li><a href="Artista.php?id_artista=9">Modo Diablo</a></li>
+                        <li><a href="Artista.php?id_artista=10">Wos</a></li>
+                        <li><a href="../Index.html">Todos</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <h2><a href="../Index.html">Inicio</a></h2>
+        </div>
+
+        <div class="nav-der">
+            <a href="../Páginas/Login.php" class="btn-nav-der">
+                <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+                    <i class="bi bi-person"></i>
+                <?php else: ?>
+                    Registrarse
+                <?php endif; ?>
+            </a>
+            <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
+
+            <aside id="carritoLateral" class="panel-der">
+                <h2>Carrito</h2>
+
+                <div id="Productos">
+                    <ul id="Lista-Productos"></ul>
+                </div>
+
+                <hr>
+
+                <div>
+                    <ul id="Lista-Nombre-Precio"></ul>
+                </div>
+
+                <h5>Total</h5>
+                <p id="Suma-Total-Precios">$</p>
+
+                <div class="Btn-Carrito">
+                    <button class="Btn-Pagar">Pagar</button>
+                </div>
+            </aside>
+        </div>
+    </nav>
 
     <main id="Inicio-Sesion">
         <div id="Cont-Login">
-            
+
             <?php if (isset($_SESSION['mensaje'])): ?>
                 <div class="mensaje-registro mensaje-exito">
                     <?php echo $_SESSION['mensaje']; ?>
@@ -53,12 +109,12 @@
             <?php endif; ?>
             <h2>Regístrate</h2>
             <form id="Registro-Form" action="Registro_processor.php" method="post">
-                
+
                 <label for="nombre_usuario_reg">Nombre de usuario</label>
                 <input type="text" id="nombre_usuario_reg" name="nombre_usuario" required>
 
                 <label for="correo_reg">Correo electrónico</label>
-                <input type="email" id="correo_reg" name="usuario" required> 
+                <input type="email" id="correo_reg" name="usuario" required>
 
                 <label for="Contrasena_reg">Contraseña</label>
                 <input type="password" id="Contrasena_reg" name="contrasena" required>

@@ -1,4 +1,4 @@
-<?php session_start(); ?> 
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
-    
+
     <style>
         .mensaje-login {
             padding: 10px;
@@ -18,11 +18,13 @@
             font-weight: bold;
             text-align: center;
         }
+
         .mensaje-exito {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
+
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
@@ -39,16 +41,16 @@
                 <aside id="menuLateral" class="panel-izq">
                     <h2>Artistas</h2>
                     <ul>
-                        <li><a href="#">Duki</a></li>
-                        <li><a href="#">YSY A</a></li>
-                        <li><a href="#">Trueno</a></li>
-                        <li><a href="#">Neo Pistea</a></li>
-                        <li><a href="#">C.R.O.</a></li>
-                        <li><a href="#">Khea</a></li>
-                        <li><a href="#">Milo j</a></li>
-                        <li><a href="#">Barderos</a></li>
-                        <li><a href="#">Wos</a></li>
-                        <li><a href="#">Modo Diablo</a></li>
+                        <li><a href="Artista.php?id_artista=1">Duki</a></li>
+                        <li><a href="Artista.php?id_artista=2">YSY A</a></li>
+                        <li><a href="Artista.php?id_artista=3">Trueno</a></li>
+                        <li><a href="Artista.php?id_artista=4">Neo Pistea</a></li>
+                        <li><a href="Artista.php?id_artista=5">C.R.O.</a></li>
+                        <li><a href="Artista.php?id_artista=6">Khea</a></li>
+                        <li><a href="Artista.php?id_artista=7">Milo j</a></li>
+                        <li><a href="Artista.php?id_artista=8">Barderos</a></li>
+                        <li><a href="Artista.php?id_artista=9">Modo Diablo</a></li>
+                        <li><a href="Artista.php?id_artista=10">Wos</a></li>
                         <li><a href="../Index.html">Todos</a></li>
                     </ul>
                 </aside>
@@ -58,7 +60,11 @@
 
         <div class="nav-der">
             <a href="../Páginas/Login.php" class="btn-nav-der">
-                <?php echo isset($_SESSION['logeado']) ? "Perfil de " . $_SESSION['nombre_usuario'] : "Registrarse"; ?>
+                <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+                    <i class="bi bi-person"></i>
+                <?php else: ?>
+                    Registrarse
+                <?php endif; ?>
             </a>
 
             <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
@@ -88,7 +94,7 @@
 
     <main id="Inicio-Sesion">
         <div id="Cont-Login">
-            
+
             <?php if (isset($_SESSION['mensaje'])): ?>
                 <div class="mensaje-login mensaje-exito">
                     <?php echo $_SESSION['mensaje']; ?>
