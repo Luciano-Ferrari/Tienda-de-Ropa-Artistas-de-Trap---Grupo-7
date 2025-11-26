@@ -1,67 +1,12 @@
-<?php
-include '../includes/conexion.php';
-
-$id_producto = $_GET['id_producto'] ?? null;
-
-$nombre_producto = "Producto No Encontrado";
-$precio_formateado = "0.00"; 
-$precio_bruto = 0.00; 
-$ruta_imagen = "../src/img/default.png";
-$texto_acciones = "";
-$producto_info = "Información no disponible.";
-$nombre_artista = "";
-
-if ($id_producto && is_numeric($id_producto)) {
-  $sql = "SELECT 
-                p.nombre AS nombre_producto, 
-                p.descripcion AS producto_info,
-                p.precio, 
-                p.ruta_imagen,
-                a.nombre AS nombre_artista
-            FROM 
-                productos p 
-            JOIN 
-                artistas a ON p.id_artista = a.id_artista
-            WHERE 
-                p.id_producto = " . $id_producto . " 
-            LIMIT 1";
-
-  $resultado = $conexion->query($sql);
-
-  if ($resultado && $resultado->num_rows > 0) {
-    $fila = $resultado->fetch_assoc();
-    $nombre_producto = $fila['nombre_producto'];
-    $producto_info = $fila['producto_info'];
-    $precio_bruto = (float)$fila['precio'];
-    $precio_formateado = number_format($precio_bruto, 2);
-    $ruta_imagen = $fila['ruta_imagen'];
-    $nombre_artista = $fila['nombre_artista'];
-    $texto_acciones = "AGREGAR AL CARRITO";
-  }
-}
-$conexion->close();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $nombre_producto; ?> | Tienda Trap</title>
+  <title>Remera Modo Diablo Blanco | Tienda Trap</title>
   <link rel="stylesheet" href="../src/Css/Style.css">
   <link rel="stylesheet" href="../src/Css/DetalleProducto.css">
-  
-  <script type="text/javascript">
-    const productoData = {
-      id: <?php echo json_encode($id_producto); ?>,
-      nombre: <?php echo json_encode($nombre_producto); ?>,
-      info: <?php echo json_encode($fila["producto_info"]); ?>,
-      precio: <?php echo json_encode($precio_bruto); ?>, 
-      artista: <?php echo json_encode($nombre_artista); ?>,
-      imagen: <?php echo json_encode($ruta_imagen); ?>
-    };
-  </script>
   <script src="../src/JavaScript/Script.js" defer></script>
 </head>
 
@@ -105,29 +50,32 @@ $conexion->close();
         </div>
         <h5>Total</h5>
         <p id="Suma-Total-Precios">$0.00</p>
+
         <div class="Btn-Carrito">
           <button class="Btn-Pagar">Pagar</button>
+          <button class="Btn-Eliminar">Eliminar Productos</button>
         </div>
+        
       </aside>
     </div>
   </nav>
-  
+
   <main id="Detalle-Producto-Contenedor">
     <section class="info-principal-producto">
       <div class="imagen-producto">
-        <img src="<?php echo $ruta_imagen; ?>" alt="<?php echo $nombre_producto; ?>">
+        <img src="../src/img/ropa-MD-3.png" alt="">
       </div>
 
       <div class="datos-producto-acciones">
         <div id="Info-Producto-detalle">
-          <p id="nombre-p-detalle"><?php echo $nombre_producto; ?></p>
-          <p id="info-p-detalle"><?php echo $producto_info; ?></p>
-          <p id="precio-p-detalle">$<?php echo $precio_formateado; ?></p>
+          <p id="nombre-p-detalle">Remera de Modo Diablo</p>
+          <p id="info-p-detalle">Blanco</p>
+          <p id="precio-p-detalle">$20</p>
         </div>
 
         <div class="acciones-producto">
           <button id="Btn-Agregar-Carrito" class="Btn-Comprar-Producto">COMPRAR</button>
-          <p class="agregar-carrito-texto"><?php echo $texto_acciones; ?></p>
+          <p class="agregar-carrito-texto">Agregar al carrito</p>
         </div>
       </div>
     </section>
@@ -180,3 +128,15 @@ $conexion->close();
 </body>
 
 </html>
+
+<script>
+  const productoData = {
+    id: Date.now(),
+    nombre: document.addEventListener("DOMContentLoaded", () => {
+      productoData.nombre = document.getElementById("nombre-p-detalle").textContent;
+      productoData.info = document.getElementById("info-p-detalle").textContent;
+      productoData.precio = parseFloat(document.getElementById("precio-p-detalle").textContent.replace("$", ""));
+      productoData.imagen = document.querySelector(".imagen-producto img").src;
+    })
+  };
+</script>

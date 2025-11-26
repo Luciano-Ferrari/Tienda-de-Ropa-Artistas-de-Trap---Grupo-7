@@ -227,24 +227,30 @@ nav img {
 
 .Btn-Carrito {
     display: flex;
-    align-items: center;
+    gap: 10px;
     justify-content: center;
+    margin-top: 15px;
 }
 
-.Btn-Pagar {
+.Btn-Pagar, .Btn-Eliminar {
     background-color: #505050;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: "Climate Crisis", sans-serif;
-    font-size: 15px;
-    font-weight: lighter;
+    font-size: 12px;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    letter-spacing: 1.3px;
 }
 
 .Btn-Pagar:hover {
     background-color: #2b2b2b;
+}
+
+.Btn-Eliminar:hover {
+    background-color: #c93333;
 }
 
 .panel-izq ul {
@@ -510,6 +516,37 @@ nav img {
 }
 
 /*Seccion de ropa de Index*/
+#Seccion-Ver-Todo {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .4s ease, opacity .3s ease;
+}
+
+#Seccion-Ver-Todo.mostrar {
+    max-height: 10000px;
+    opacity: 1;
+}
+
+#Seccion-Productos-index {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px 40px 70px;
+}
+
+#Ver-todo i {
+    transition: transform .3s ease;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+#Ver-todo.rotado i {
+    transform: rotate(180deg);
+}
+
 #Ver-todo {
     text-align: center;
 }
@@ -521,12 +558,6 @@ nav img {
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.372);
     color: black;
     text-decoration: none;
-}
-
-#Seccion-Productos {
-    max-width: 1400px;
-    margin: auto;
-    padding: 40px 20px;
 }
 
 /* Footer */
@@ -841,7 +872,8 @@ footer hr {
     transition: color 0.25s ease;
 }
 
-#Info-Producto:hover a, #Info-Producto:hover p {
+#Info-Producto:hover a,
+#Info-Producto:hover p {
     color: #414141;
 }
 
@@ -964,56 +996,88 @@ footer hr {
     padding: 100px 0px;
 }
 
-#Login-Form label {
-    font-size: 20px;
+#Cont-Login h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.mensaje-login,
+.mensaje-registro {
+    width: 80%;
+    padding: 12px 18px;
+    border-radius: 8px;
     font-weight: 700;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    text-align: left;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-#Login-Form input {
-    padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #000;
-    border-radius: 2px;
+.mensaje-exito {
+    background: #d3ffd6;
+    border: 2px solid #5cbf64;
 }
 
-#Login-Form {
+.mensaje-error {
+    background: #ffd6d6;
+    border: 2px solid #d95353;
+}
+
+#Login-Form,
+#Registro-Form {
+    width: 450px;
     display: flex;
     flex-direction: column;
 }
 
-#Btn-Login {
-    width: 150px;
+#Login-Form label,
+#Registro-Form label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#Login-Form input,
+#Registro-Form input {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #fff;
+}
+
+#Btn-Login,
+#Btn-Registro {
+    width: 180px;
     background: #000;
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 10px 5px;
-    font-size: 17px;
-    margin-top: 20px;
+    padding: 12px 5px;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
     transition: 0.2s;
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-weight: 700;
-    margin: 20px auto 0 auto;
+    margin: 25px auto 0 auto;
 }
 
-#Btn-Login:hover {
+#Btn-Login:hover,
+#Btn-Registro:hover {
     background: #292929;
+}
+
+#Cont-Login p {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 #Cont-Login p a {
     text-decoration: none;
     color: #000;
-    font-weight: 700;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.299);
-}
-
-#Cont-Login p {
-    margin-top: 10px;
-    margin-bottom: 25px;
 }
 
 #Separador-Login {
@@ -1035,7 +1099,6 @@ footer hr {
     border-radius: 25px;
     background: #fff;
     display: flex;
-    text-align: center;
     justify-content: center;
     gap: 12px;
     cursor: pointer;
@@ -1054,9 +1117,8 @@ footer hr {
 #Otros-Login button a {
     text-decoration: none;
     color: #000;
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-weight: 700;
     font-size: 17px;
+    font-weight: 700;
 }
 
 /*Página de producto*/
@@ -1070,13 +1132,14 @@ footer hr {
     max-width: 1300px;
     margin: auto;
     display: flex;
+    gap: 100px;
     padding: 40px;
 }
 
 .imagen-producto img {
-    width: 650px;
-    height: 650px;
-    border: 1px solid #000000;
+    width: 600px;
+    height: 600px;
+    border: 1px solid #000;
     border-radius: 15px;
     box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.12);
 }
@@ -1084,45 +1147,35 @@ footer hr {
 .datos-producto-acciones {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    align-items: center;
-}
-
-#Info-Producto-detalle {
-    margin-left: -100px;
+    justify-content: space-between;
+    max-height: 550px;
+    min-width: 700px;
 }
 
 #nombre-p-detalle,
 #info-p-detalle {
     font-family: "Bricolage Grotesque", sans-serif;
-    font-weight: 400;
     font-size: 48px;
     margin: 0;
-    padding: 0;
-    text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.12);
 }
 
 #precio-p-detalle {
     font-family: "Candal", sans-serif;
-    font-weight: bolder;
     font-size: 55px;
-    text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.12);
-    margin: 0%;
-    padding: 0;
+    margin: 0;
 }
 
-.acciones-producto{
+.acciones-producto {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    margin: 300px 0px 0px 400px;
 }
 
-.Btn-Comprar-Producto{
+.Btn-Comprar-Producto {
     font-family: "Bowlby One SC", sans-serif;
     font-size: 30px;
-    padding: 10px 50px;
+    padding: 15px 60px;
     border-radius: 60px;
     background-color: #989898;
     color: #f0eeee;
@@ -1132,7 +1185,6 @@ footer hr {
 
 .agregar-carrito-texto {
     font-size: 15px;
-    text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.12);
-    margin: 0%;
-    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
 }

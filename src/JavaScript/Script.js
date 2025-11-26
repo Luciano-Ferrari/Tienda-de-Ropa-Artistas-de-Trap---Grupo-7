@@ -3,12 +3,12 @@ const nav = document.querySelector("nav");
 const navOffsetTop = nav.offsetTop;
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > navOffsetTop) {
-        nav.classList.add("nav-fixed");
-    } 
-    else {
-        nav.classList.remove("nav-fixed");
-    }
+  if (window.scrollY > navOffsetTop) {
+    nav.classList.add("nav-fixed");
+  }
+  else {
+    nav.classList.remove("nav-fixed");
+  }
 });
 
 
@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/*Java de Carrito*/
+
 const btnMenu = document.getElementById('btnMenu');
 const menuLateral = document.getElementById('menuLateral');
 const btnCarrito = document.getElementById('Btn-Carrito');
@@ -98,7 +100,7 @@ const guardarCarrito = (carrito) => {
 
 const renderizarCarrito = () => {
   const carrito = cargarCarrito();
-  
+
   listaProductos.innerHTML = '';
   let total = 0;
 
@@ -117,7 +119,7 @@ const renderizarCarrito = () => {
       li.classList.add('item-carrito');
       li.innerHTML = `
         <span class="cantidad">${producto.cantidad}x</span> 
-        <span class="nombre-producto-carrito">${producto.nombre}</span> 
+        <span class="nombre-producto-carrito"> ${producto.nombre} ${producto.info ? `(${producto.info})` : ""}</span>
         <span class="precio-producto-carrito">$${subtotal.toFixed(2)}</span>
       `;
       listaProductos.appendChild(li);
@@ -134,12 +136,12 @@ const agregarProductoAlCarrito = (producto) => {
     console.error('No se pudo agregar el producto: datos incompletos.');
     return;
   }
-  
+
   const carrito = cargarCarrito();
   carrito.push(producto);
   guardarCarrito(carrito);
   renderizarCarrito();
-  
+
   if (carritoLateral) {
     carritoLateral.classList.add('activo');
     menuLateral.classList.remove('activo');
@@ -170,3 +172,24 @@ if (btnAgregarCarrito && typeof productoData !== 'undefined') {
 }
 
 document.addEventListener('DOMContentLoaded', renderizarCarrito);
+
+const btnEliminarCarrito = document.querySelector(".Btn-Eliminar");
+
+if (btnEliminarCarrito) {
+    btnEliminarCarrito.addEventListener("click", () => {
+        localStorage.removeItem("carritoTiendaTrap"); // vacía carrito
+        renderizarCarrito(); // actualiza la vista
+    });
+}
+
+/*Java de Index, Ocultar/ver todo*/
+const botonVerTodo = document.getElementById("Ver-todo");
+const seccionVerTodo = document.getElementById("Seccion-Ver-Todo");
+
+botonVerTodo.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  seccionVerTodo.classList.toggle("mostrar");
+
+  botonVerTodo.classList.toggle("rotado");
+});
