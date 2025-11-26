@@ -133,7 +133,8 @@ if ($resultado && $resultado->num_rows > 0) {
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <button class="Btn-Pagar">Pagar</button>
+                    <a href="../Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+                    <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>
         </div>
