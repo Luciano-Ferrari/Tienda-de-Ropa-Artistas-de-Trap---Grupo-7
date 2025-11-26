@@ -1,5 +1,6 @@
 <?php
 include '../includes/conexion.php';
+session_start();
 
 $products_per_page = 12;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
@@ -106,8 +107,13 @@ if ($resultado && $resultado->num_rows > 0) {
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/Registro.html" class="btn-nav-der">Registrarse</a>
-
+            <a href="../Páginas/Login.php" class="btn-nav-der">
+                <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+                    <i class="bi bi-person"></i>
+                <?php else: ?>
+                    Registrarse
+                <?php endif; ?>
+            </a>
             <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
 
             <aside id="carritoLateral" class="panel-der">
@@ -158,26 +164,26 @@ if ($resultado && $resultado->num_rows > 0) {
                                 </div>
                             </div>
 
-                        </a> 
+                        </a>
                     </div>
 
                     <?php
                 }
             }
             ?>
-        </section> <?php 
-        $max_visible_page = 2; 
+        </section> <?php
+        $max_visible_page = 2;
         $num_pages_to_display = min($total_pages, $max_visible_page);
-        
-        if ($num_pages_to_display > 0) { 
-        ?>
+
+        if ($num_pages_to_display > 0) {
+            ?>
             <div class="pagination-container">
                 <nav aria-label="Navegación de productos">
                     <ul class="pagination">
                         <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
-                            <a class="page-link" 
-                               href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page - 1; ?>" 
-                               aria-label="Anterior">
+                            <a class="page-link"
+                                href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page - 1; ?>"
+                                aria-label="Anterior">
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         </li>
@@ -186,8 +192,8 @@ if ($resultado && $resultado->num_rows > 0) {
                         for ($i = 1; $i <= $num_pages_to_display; $i++) {
                             ?>
                             <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                                <a class="page-link" 
-                                   href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $i; ?>">
+                                <a class="page-link"
+                                    href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $i; ?>">
                                     <?php echo $i; ?>
                                 </a>
                             </li>
@@ -195,10 +201,11 @@ if ($resultado && $resultado->num_rows > 0) {
                         }
                         ?>
 
-                        <li class="page-item <?php echo ($page >= $max_visible_page || $page >= $total_pages) ? 'disabled' : ''; ?>">
-                            <a class="page-link" 
-                               href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page + 1; ?>" 
-                               aria-label="Siguiente">
+                        <li
+                            class="page-item <?php echo ($page >= $max_visible_page || $page >= $total_pages) ? 'disabled' : ''; ?>">
+                            <a class="page-link"
+                                href="?<?php echo isset($id_artista) ? 'id_artista=' . $id_artista . '&' : ''; ?>page=<?php echo $page + 1; ?>"
+                                aria-label="Siguiente">
                                 <span aria-hidden="true">&gt;</span>
                             </a>
                         </li>
@@ -206,7 +213,7 @@ if ($resultado && $resultado->num_rows > 0) {
                 </nav>
             </div>
         <?php } ?>
-        </main>
+    </main>
     <footer>
         <div class="Footer-Cont">
             <div class="info-footer">
@@ -254,6 +261,6 @@ if ($resultado && $resultado->num_rows > 0) {
 </body>
 
 </html>
-<?php 
+<?php
 $conexion->close();
 ?>
