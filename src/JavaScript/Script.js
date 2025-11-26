@@ -78,3 +78,95 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const btnMenu = document.getElementById('btnMenu');
+const menuLateral = document.getElementById('menuLateral');
+const btnCarrito = document.getElementById('Btn-Carrito');
+const carritoLateral = document.getElementById('carritoLateral');
+const listaProductos = document.getElementById('Lista-Productos');
+const sumaTotalPrecios = document.getElementById('Suma-Total-Precios');
+const btnAgregarCarrito = document.getElementById('Btn-Agregar-Carrito');
+
+const cargarCarrito = () => {
+  const carrito = JSON.parse(localStorage.getItem('carritoTiendaTrap')) || [];
+  return carrito;
+};
+
+const guardarCarrito = (carrito) => {
+  localStorage.setItem('carritoTiendaTrap', JSON.stringify(carrito));
+};
+
+const renderizarCarrito = () => {
+  const carrito = cargarCarrito();
+  
+  listaProductos.innerHTML = '';
+  let total = 0;
+
+  if (carrito.length === 0) {
+    listaProductos.innerHTML = '<li class="carrito-vacio">El carrito está vacío.</li>';
+  } else {
+    const productosAgrupados = carrito.reduce((acc, producto) => {
+      acc[producto.id] = acc[producto.id] || { ...producto, cantidad: 0 };
+      acc[producto.id].cantidad++;
+      return acc;
+    }, {});
+
+    Object.values(productosAgrupados).forEach(producto => {
+      const subtotal = producto.precio * producto.cantidad;
+      const li = document.createElement('li');
+      li.classList.add('item-carrito');
+      li.innerHTML = `
+        <span class="cantidad">${producto.cantidad}x</span> 
+        <span class="nombre-producto-carrito">${producto.nombre}</span> 
+        <span class="precio-producto-carrito">$${subtotal.toFixed(2)}</span>
+      `;
+      listaProductos.appendChild(li);
+    });
+
+    total = carrito.reduce((sum, producto) => sum + producto.precio, 0);
+  }
+
+  sumaTotalPrecios.textContent = `$${total.toFixed(2)}`;
+};
+
+const agregarProductoAlCarrito = (producto) => {
+  if (!producto || !producto.id || producto.precio === 0) {
+    console.error('No se pudo agregar el producto: datos incompletos.');
+    return;
+  }
+  
+  const carrito = cargarCarrito();
+  carrito.push(producto);
+  guardarCarrito(carrito);
+  renderizarCarrito();
+  
+  if (carritoLateral) {
+    carritoLateral.classList.add('activo');
+    menuLateral.classList.remove('activo');
+  }
+};
+
+const toggleMenu = () => {
+  menuLateral.classList.toggle('activo');
+  if (menuLateral.classList.contains('activo') && carritoLateral) {
+    carritoLateral.classList.remove('activo');
+  }
+};
+
+const toggleCarrito = () => {
+  carritoLateral.classList.toggle('activo');
+  if (carritoLateral.classList.contains('activo') && menuLateral) {
+    menuLateral.classList.remove('activo');
+  }
+};
+
+if (btnMenu) btnMenu.addEventListener('click', toggleMenu);
+if (btnCarrito) btnCarrito.addEventListener('click', toggleCarrito);
+
+if (btnAgregarCarrito && typeof productoData !== 'undefined') {
+  btnAgregarCarrito.addEventListener('click', () => {
+    agregarProductoAlCarrito(productoData);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderizarCarrito);

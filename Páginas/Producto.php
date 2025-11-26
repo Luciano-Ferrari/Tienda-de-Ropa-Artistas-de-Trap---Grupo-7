@@ -4,10 +4,12 @@ include '../includes/conexion.php';
 $id_producto = $_GET['id_producto'] ?? null;
 
 $nombre_producto = "Producto No Encontrado";
-$precio = "0.00";
+$precio_formateado = "0.00"; 
+$precio_bruto = 0.00; 
 $ruta_imagen = "../src/img/default.png";
 $texto_acciones = "";
 $producto_info = "Información no disponible.";
+$nombre_artista = "";
 
 if ($id_producto && is_numeric($id_producto)) {
   $sql = "SELECT 
@@ -30,7 +32,8 @@ if ($id_producto && is_numeric($id_producto)) {
     $fila = $resultado->fetch_assoc();
     $nombre_producto = $fila['nombre_producto'];
     $producto_info = $fila['producto_info'];
-    $precio = number_format($fila['precio'], 2);
+    $precio_bruto = (float)$fila['precio'];
+    $precio_formateado = number_format($precio_bruto, 2);
     $ruta_imagen = $fila['ruta_imagen'];
     $nombre_artista = $fila['nombre_artista'];
     $texto_acciones = "AGREGAR AL CARRITO";
@@ -48,6 +51,16 @@ $conexion->close();
   <title><?php echo $nombre_producto; ?> | Tienda Trap</title>
   <link rel="stylesheet" href="../src/Css/Style.css">
   <link rel="stylesheet" href="../src/Css/DetalleProducto.css">
+  
+  <script type="text/javascript">
+    const productoData = {
+      id: <?php echo json_encode($id_producto); ?>,
+      nombre: <?php echo json_encode($nombre_producto); ?>,
+      precio: <?php echo json_encode($precio_bruto); ?>, 
+      artista: <?php echo json_encode($nombre_artista); ?>,
+      imagen: <?php echo json_encode($ruta_imagen); ?>
+    };
+  </script>
   <script src="../src/JavaScript/Script.js" defer></script>
 </head>
 
@@ -90,7 +103,7 @@ $conexion->close();
           <ul id="Lista-Nombre-Precio"></ul>
         </div>
         <h5>Total</h5>
-        <p id="Suma-Total-Precios">$</p>
+        <p id="Suma-Total-Precios">$0.00</p>
         <div class="Btn-Carrito">
           <button class="Btn-Pagar">Pagar</button>
         </div>
@@ -108,11 +121,11 @@ $conexion->close();
         <div id="Info-Producto-detalle">
           <p id="nombre-p-detalle"><?php echo $nombre_producto; ?></p>
           <p id="info-p-detalle"><?php echo $producto_info; ?></p>
-          <p id="precio-p-detalle">$<?php echo $precio; ?></p>
+          <p id="precio-p-detalle">$<?php echo $precio_formateado; ?></p>
         </div>
 
         <div class="acciones-producto">
-          <button class="Btn-Comprar-Producto">COMPRAR</button>
+          <button id="Btn-Agregar-Carrito" class="Btn-Comprar-Producto">COMPRAR</button>
           <p class="agregar-carrito-texto"><?php echo $texto_acciones; ?></p>
         </div>
       </div>
