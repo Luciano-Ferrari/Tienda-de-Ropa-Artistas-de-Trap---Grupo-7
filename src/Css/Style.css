@@ -907,6 +907,65 @@ footer hr {
   font-size: 25px;
 }
 
+.Nav-de-abajo {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  margin: 0;
+  justify-content: space-between;
+  padding: 0px 50px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination .page-link {
+  text-decoration: none;
+  color: #000;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.pagination .page-item:not(.active) .page-link {
+  color: #b5b5b5;
+}
+
+.pagination .page-item.active .page-link {
+  color: #000;
+}
+
+.pagination .page-item .page-link span {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.pagination .page-item.disabled .page-link,
+.pagination .page-item.disabled .page-link:hover {
+    pointer-events: none;
+}
+
+.page-item {
+  border: none;
+}
+
 @media (max-width: 1023px) and (min-width: 768px) {
   #Seccion-Productos {
     grid-template-columns: repeat(2, 1fr);

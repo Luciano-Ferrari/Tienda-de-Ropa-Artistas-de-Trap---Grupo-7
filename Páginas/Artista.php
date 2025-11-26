@@ -179,7 +179,7 @@ if ($resultado && $resultado->num_rows > 0) {
         if ($num_pages_to_display > 0) {
             ?>
             <div class="pagination-container">
-                <nav aria-label="Navegación de productos">
+                <nav class="Nav-de-abajo" aria-label="Navegación de productos">
                     <ul class="pagination">
                         <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
                             <a class="page-link"
