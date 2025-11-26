@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2025 a las 21:31:28
+-- Tiempo de generación: 26-11-2025 a las 05:01:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,13 +39,13 @@ CREATE TABLE `artistas` (
 
 INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
 (1, 'Duki', '../src/img/Duki.png'),
-(2, 'YSY A', NULL),
-(3, 'Trueno', NULL),
-(4, 'Neo Pistea', 'HTML'),
+(2, 'YSY A', '../src/img/Ysy.png'),
+(3, 'Trueno', '../src/img/Trueno.png'),
+(4, 'Neo Pistea', '../src/img/Duki.png'),
 (5, 'C.R.O.', '../src/img/CRO.jpg'),
 (6, 'Khea', 'HTML'),
 (7, 'Milo j', NULL),
-(8, 'Barderos', NULL),
+(8, 'Barderos', '../src/img/Duki.png'),
 (9, 'Modo Diablo', '../src/img/ModoDiablo.png'),
 (10, 'Wos', '../src/img/Wos.png');
 
@@ -118,15 +118,6 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (56, 1, 'Sticker Duki Holográfico', 'Sticker con retrato de Duki en acabado iridiscente/holográfico.', 19.99, 'sticker-duki-2.jpg', 'Sticker'),
 (57, 1, 'Sticker Duki Retrato', 'Sticker con retrato a color de Duki (Camisa negra).', 19.99, 'sticker-duki-3.jpg', 'Sticker'),
 (58, 1, 'Llavero Logo Duki', 'Llavero metálico con el diseño del logo geométrico de Duki.', 29.99, 'Llavero-Duki-1.png', 'Llavero'),
-(59, 2, 'Remera Chain Roquero (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Mi Chain de Roque\" (Duki x C.R.O.).', 59.99, 'Remera-cro-chainroque.png', 'Remera'),
-(60, 2, 'Remera Fuck Luv (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Fuck Luv\" (Duki x C.R.O.), diseño glitch.', 59.99, 'Remera-cro-fucklove.jpg', 'Remera'),
-(61, 2, 'Remera Retrato C.R.O. (Gorro)', 'Remera negra oversized con retrato en blanco y negro de C.R.O. con gorro.', 64.99, 'Remera-cro-cara.jpg', 'Remera'),
-(62, 2, 'Remera Retrato C.R.O. (Gris)', 'Remera gris con foto de C.R.O. en musculosa y gorra.', 64.99, 'Remera-cro-gris.png', 'Remera'),
-(63, 2, 'Remera Retrato C.R.O. (Tiempo)', 'Remera negra con retrato en blanco y negro de C.R.O. fumando y usando gorra.', 59.99, 'Remera-cro-tiempo.png', 'Remera'),
-(64, 2, 'Remera C.R.O. Alas', 'Remera negra con logo \"C.R.O.\" blanco, alas de demonio y halo.', 54.99, 'Remera-cro-alas.png', 'Remera'),
-(65, 2, 'Remera C.R.O. Trucha (Logo Cadena)', 'Remera negra con diseño de cadena y dije de logo \"C.R.O.\" alado.', 54.99, 'Remera-cro-trucha.png', 'Remera'),
-(66, 2, 'Crop Top C.R.O. Luna', 'Remera corta para mujer con diseño de luna y estrellas \"C.R.O.\". ', 49.99, 'Remera-cro-mujer.png', 'Remera'),
-(67, 2, 'Remera C.R.O. Smiley Nirvana', 'Remera negra con diseño de smiley face alado y gorro con logo C.R.O. debajo (Estilo Nirvana).', 59.99, 'Remera-cro-nirvana.png', 'Remera'),
 (68, 9, 'Remera Chain Roquero (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Mi Chain de Roque\" (Duki x C.R.O.).', 59.99, 'Remera-cro-chainroque.png', 'Remera'),
 (69, 9, 'Remera Fuck Luv (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Fuck Luv\" (Duki x C.R.O.), diseño glitch.', 59.99, 'Remera-cro-fucklove.jpg', 'Remera'),
 (70, 9, 'Remera Retrato C.R.O. (Gorro)', 'Remera negra oversized con retrato en blanco y negro de C.R.O. con gorro.', 64.99, 'Remera-cro-cara.jpg', 'Remera'),
@@ -143,7 +134,51 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (82, 5, 'Remera de C.R.O', 'Gris', 20.00, '../src/img/Remera-cro-gris.png', 'Remera'),
 (83, 5, 'Remera de C.R.O', 'Trucha', 20.00, '../src/img/Remera-cro-trucha.png', 'Remera'),
 (84, 5, 'Remera de C.R.O', 'Mujer', 20.00, '../src/img/Remera-cro-mujer.png', 'Remera'),
-(85, 5, 'Remera de C.R.O', 'Emo', 20.00, '../src/img/Remera-cro-emo.png', 'Remera');
+(85, 5, 'Remera de C.R.O', 'Emo', 20.00, '../src/img/Remera-cro-emo.png', 'Remera'),
+(86, 5, 'Cadena de C.R.O.', 'Alas', 10.00, '../src/img/Cadena-cro-alas.png', 'Accesorios'),
+(87, 5, 'Cadena de C.R.O.', 'Logo C.R.O.', 10.00, '../src/img/Cadena-cro-cro.png', 'Accesorios'),
+(88, 5, 'Vinilo de C.R.O.', 'Leyendas de la Noche', 80.00, '../src/img/Vinilo-cro-leyendasdelanoche.png', 'Accesorios'),
+(89, 5, 'Vinilo de C.R.O.', 'Cápsula', 10.00, '../src/img/Vinilo-cro-capsula.png', 'Accesorios'),
+(90, 5, 'Vinilo de C.R.O.', 'Mal de la Cabeza', 80.00, '../src/img/Vinilo-cro-maldelacabeza.png', 'Accesorios'),
+(91, 5, 'Cuadro de C.R.O.', 'MDB Vol 1', 30.00, '../src/img/Cuadro-cro-mdbvol1.png', 'Accesorios'),
+(92, 5, 'Vinilo de C.R.O.', 'Gedientos', 80.00, '../src/img/Vinilo-cro-gedientos.png', 'Accesorios'),
+(93, 5, 'Cuadro de C.R.O.', 'Cápsula', 30.00, '../src/img/Cuadro-cro-capsula.png', 'Accesorios'),
+(94, 5, 'Cuadro de C.R.O.', 'Temor', 30.00, '../src/img/Cuadro-cro-temor.png', 'Accesorios'),
+(95, 5, 'Cuadro de C.R.O.', '542', 30.00, '../src/img/Cuadro-cro-542.png', 'Accesorios'),
+(96, 5, 'Sticker de C.R.O.', 'Blanco', 1.00, '../src/img/Sticker-cro-blanco.png', 'Accesorios'),
+(97, 5, 'Sticker de C.R.O.', 'Barderos X M.D.B', 1.00, '../src/img/Sticker-cro-barderosxmdb.png', 'Accesorios'),
+(98, 5, 'Medias de C.R.O.', 'Medias', 10.00, '../src/img/Medias-cro-medias.png', 'Accesorios'),
+(99, 5, 'Sticker de C.R.O.', 'Animado', 1.00, '../src/img/Sticker-cro-animado.png', 'Accesorios'),
+(100, 2, 'Remera de YSY A', 'Ysysmo', 20.00, '../src/img/Remera-ysy-ysysmo.png', 'Remeras'),
+(101, 2, 'Remera de YSY A', 'Dúo Favorito', 20.00, '../src/img/Remera-ysy-duo.png', 'Remeras'),
+(102, 2, 'Remera de YSY A', 'Boxy Fit', 20.00, '../src/img/Remera-ysy-boxyfit.png', 'Remeras'),
+(103, 2, 'Remera de YSY A', 'Overside', 20.00, '../src/img/Remera-ysy-overside.png', 'Remeras'),
+(104, 2, 'Remera de YSY A', 'Gris', 20.00, '../src/img/Remera-ysy-gris.png', 'Remeras'),
+(105, 2, 'Remera de YSY A', 'Money', 20.00, '../src/img/Remera-ysy-money.png', 'Remeras'),
+(106, 2, 'Remera de YSY A', 'Flow Infarto (c/ Bizarrap)', 20.00, '../src/img/Remera-ysy-flowinfarto.png', 'Remeras'),
+(107, 2, 'Cadena de YSY A', 'Sponsor dios', 10.00, '../src/img/Cadena-ysy-Sponsordios.png', 'Accesorios'),
+(108, 2, 'Cadena de YSY A', 'Logo 56cm', 10.00, '../src/img/Cadena-ysy-56cm.png', 'Accesorios'),
+(109, 2, 'Anillo de YSY A', 'Sponsor dios', 15.00, '../src/img/Anillo-ysy-sponsordios.png', 'Accesorios'),
+(120, 2, 'Vinilo de YSY A', 'Mordiendo el Bozal', 80.00, '../src/img/Vinilo-ysy-mordiendoelbozal.png', 'Accesorios'),
+(121, 2, 'Vinilo de YSY A', 'Trap de Verdad', 80.00, '../src/img/Vinilo-ysy-trapdeverdad.png', 'Accesorios'),
+(122, 2, 'Vinilo de YSY A', 'Antezana 247', 80.00, '../src/img/Vinilo-ysy-antezana247.png', 'Accesorios'),
+(123, 2, 'Vinilo de YSY A', 'Ysysmo', 80.00, '../src/img/Vinilo-ysy-ysysmo.png', 'Accesorios'),
+(124, 2, 'Vinilo de YSY A', 'Full Ice', 80.00, '../src/img/Vinilo-ysy-fullice.png', 'Accesorios'),
+(125, 2, 'Sticker de YSY A', 'Lenguitaa', 1.00, '../src/img/Sticker-ysy-lenguitaa.png', 'Accesorios'),
+(126, 2, 'Sticker de YSY A', 'Plastificado', 1.00, '../src/img/Sticker-ysy-plastificado.png', 'Accesorios'),
+(127, 2, 'Sticker de YSY A', 'Ysysmo', 1.00, '../src/img/Sticker-ysy-ysysmo.png', 'Accesorios'),
+(128, 2, 'Sticker de YSY A', 'Ysysmo', 1.00, '../src/img/Sticker-ysy-ysysmo2.png', 'Accesorios'),
+(129, 2, 'Gorra Pilusa de YSY A', 'Ysysmo', 10.00, '../src/img/Pilusa-ysy-ysysmo.png', 'Accesorios'),
+(130, 2, 'Cuadro de YSY A', 'Antezana 247', 30.00, '../src/img/Cuadro-ysy-antezana247.png', 'Accesorios'),
+(131, 2, 'Cuadro de YSY A', 'Mordiendo el Bozal', 30.00, '../src/img/Cuadro-ysy-moridiendoelbozal.png', 'Accesorios'),
+(132, 2, 'Cuadro de YSY A', 'Trampa al Tiempo', 30.00, '../src/img/Cuadro-ysy-trampaaltiempo.png', 'Accesorios'),
+(133, 2, 'Peluche de YSY A', 'Viejo Verde', 25.00, '../src/img/Peluche-ysy-viejoverde.png', 'Accesorios'),
+(134, 3, 'Remera de Trueno', 'Campeón FMS', 20.00, '../src/img/Remera-trueno-fms.png', 'Remeras'),
+(135, 3, 'Remera de Trueno', 'Logo Gris', 20.00, '../src/img/Remera-trueno-gris.png', 'Remeras'),
+(136, 3, 'Remera de Trueno', 'Boca Juniors', 20.00, '../src/img/Remera-trueno-boca.png', 'Remeras'),
+(137, 3, 'Remera de Trueno', 'Atrevido', 20.00, '../src/img/Remera-trueno-atrevido.png', 'Remeras'),
+(138, 3, 'Remera de Trueno', 'Bien o mal', 20.00, '../src/img/Remera-trueno-bnomal.png', 'Remeras'),
+(139, 3, 'Remera de Trueno', 'Boca Vintage', 20.00, '../src/img/Remera-trueno-bocavintage.png', 'Remeras');
 
 --
 -- Índices para tablas volcadas
@@ -176,7 +211,7 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- Restricciones para tablas volcadas
