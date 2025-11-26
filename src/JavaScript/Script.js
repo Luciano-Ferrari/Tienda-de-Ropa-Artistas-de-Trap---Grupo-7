@@ -142,23 +142,24 @@ const agregarProductoAlCarrito = (producto) => {
   guardarCarrito(carrito);
   renderizarCarrito();
 
-  if (carritoLateral) {
-    carritoLateral.classList.add('activo');
-    menuLateral.classList.remove('activo');
-  }
+  carritoLateral.classList.add('active');
+  menuLateral.classList.remove('active');
+
+  const overlay = document.getElementById("overlay");
+  if (overlay) overlay.classList.add("show");
 };
 
 const toggleMenu = () => {
-  menuLateral.classList.toggle('activo');
-  if (menuLateral.classList.contains('activo') && carritoLateral) {
-    carritoLateral.classList.remove('activo');
+  menuLateral.classList.toggle('active');
+  if (menuLateral.classList.contains('active') && carritoLateral) {
+    carritoLateral.classList.remove('active');
   }
 };
 
 const toggleCarrito = () => {
-  carritoLateral.classList.toggle('activo');
-  if (carritoLateral.classList.contains('activo') && menuLateral) {
-    menuLateral.classList.remove('activo');
+  carritoLateral.classList.toggle('active');
+  if (carritoLateral.classList.contains('active') && menuLateral) {
+    menuLateral.classList.remove('active');
   }
 };
 
