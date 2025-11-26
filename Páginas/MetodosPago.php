@@ -36,7 +36,7 @@
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/Login.php" class="btn-nav-der">
+            <a href="../Páginas/Registro.php" class="btn-nav-der">
                 <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
                     <i class="bi bi-person"></i>
                 <?php else: ?>
@@ -63,7 +63,8 @@
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <button class="Btn-Pagar">Pagar</button>
+                    <a href="../Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+                    <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>
         </div>

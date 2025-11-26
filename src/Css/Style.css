@@ -237,6 +237,11 @@ nav img {
   transition: all 0.2s ease;
   cursor: pointer;
   letter-spacing: 1.3px;
+  text-decoration: none;
+}
+
+.Btn-Pagar {
+  padding-top: 16px;
 }
 
 .Btn-Pagar:hover {
@@ -301,9 +306,14 @@ nav img {
     font-size: 18px;
   }
 
-  .Btn-Pagar {
-    font-size: 14px;
+  .Btn-Pagar,
+  .Btn-Eliminar {
+    font-size: 13px;
     padding: 9px 16px;
+  }
+
+  .Btn-Pagar {
+    padding-top: 14px;
   }
 }
 
@@ -327,9 +337,14 @@ nav img {
     font-size: 14px;
   }
 
-  .Btn-Pagar {
-    font-size: 13px;
+  .Btn-Pagar,
+  .Btn-Eliminar {
+    font-size: 12px;
     padding: 8px 14px;
+  }
+
+  .Btn-Pagar {
+    padding-top: 12px;
   }
 }
 
@@ -353,9 +368,15 @@ nav img {
     font-size: 13px;
   }
 
-  .Btn-Pagar {
-    font-size: 12px;
+  .Btn-Pagar,
+  .Btn-Eliminar {
+    font-size: 11px;
     padding: 7px 12px;
+    border-radius: 8px;
+  }
+
+  .Btn-Pagar {
+    padding-top: 11px;
   }
 }
 
@@ -1103,6 +1124,121 @@ footer hr {
   font-weight: 700;
 }
 
+@media (max-width: 1100px) {
+  #Login-Form,
+  #Registro-Form {
+    width: 420px; /* un poquito más chico */
+  }
+
+  #Otros-Login button {
+    width: 450px;
+  }
+}
+
+@media (max-width: 900px) {
+  #Cont-Login {
+    padding: 20px 0 20px 0;
+  }
+
+  #Login-Form,
+  #Registro-Form {
+    width: 380px;
+  }
+
+  #Cont-Login h2 {
+    font-size: 28px;
+  }
+
+  #Login-Form label,
+  #Registro-Form label {
+    font-size: 16px;
+  }
+
+  #Login-Form input,
+  #Registro-Form input {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+
+  #Otros-Login button {
+    width: 380px;
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 650px) {
+  #Cont-Login {
+    padding: 15px 0 15px 0;
+  }
+
+  #Cont-Login h2 {
+    font-size: 26px;
+  }
+
+  #Login-Form,
+  #Registro-Form {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  #Cont-Login p {
+    font-size: 14px;
+  }
+
+  #Otros-Login button {
+    width: 90%;
+    max-width: 350px;
+    padding: 12px;
+    align-items: center;
+  }
+
+  #Otros-Login img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #Otros-Login button a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  #Cont-Login {
+    padding: 10px 0 10px 0;
+  }
+
+  #Cont-Login h2 {
+    font-size: 23px;
+  }
+
+  #Login-Form,
+  #Registro-Form {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #Login-Form input,
+  #Registro-Form input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  #Otros-Login button {
+    max-width: 300px;
+    padding: 10px 14px;
+    align-items: center;
+  }
+
+  #Otros-Login button img {
+    width: 15px;
+    height: 15px;
+  }
+
+  #Otros-Login button a {
+    font-size: 14px;
+  }
+}
+
 /*Página de producto*/
 
 #Detalle-Producto-Contenedor {
@@ -1298,7 +1434,6 @@ footer hr {
   margin-top: 10px;
 }
 
-
 .pago-form input {
   width: 100%;
   box-sizing: border-box;
@@ -1311,7 +1446,6 @@ footer hr {
 }
 
 @media (max-width: 1170px) {
-
   .pago-cont {
     flex-direction: column;
     align-items: center;
@@ -1334,7 +1468,6 @@ footer hr {
 }
 
 @media (max-width: 900px) {
-
   .pago-form,
   .pago-resumen {
     max-width: 500px;
@@ -1368,7 +1501,6 @@ footer hr {
 }
 
 @media (max-width: 650px) {
-
   .pago-form,
   .pago-resumen {
     max-width: 420px;
@@ -1392,7 +1524,6 @@ footer hr {
 }
 
 @media (max-width: 490px) {
-
   .pago-form,
   .pago-resumen {
     max-width: 360px;
@@ -1422,7 +1553,6 @@ footer hr {
 }
 
 @media (max-width: 360px) {
-
   .pago-form,
   .pago-resumen {
     max-width: 95%;

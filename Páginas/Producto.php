@@ -4,8 +4,8 @@ include '../includes/conexion.php';
 $id_producto = $_GET['id_producto'] ?? null;
 
 $nombre_producto = "Producto No Encontrado";
-$precio_formateado = "0.00"; 
-$precio_bruto = 0.00; 
+$precio_formateado = "0.00";
+$precio_bruto = 0.00;
 $ruta_imagen = "../src/img/default.png";
 $texto_acciones = "";
 $producto_info = "Información no disponible.";
@@ -32,7 +32,7 @@ if ($id_producto && is_numeric($id_producto)) {
     $fila = $resultado->fetch_assoc();
     $nombre_producto = $fila['nombre_producto'];
     $producto_info = $fila['producto_info'];
-    $precio_bruto = (float)$fila['precio'];
+    $precio_bruto = (float) $fila['precio'];
     $precio_formateado = number_format($precio_bruto, 2);
     $ruta_imagen = $fila['ruta_imagen'];
     $nombre_artista = $fila['nombre_artista'];
@@ -51,13 +51,13 @@ $conexion->close();
   <title><?php echo $nombre_producto; ?> | Tienda Trap</title>
   <link rel="stylesheet" href="../src/Css/Style.css">
   <link rel="stylesheet" href="../src/Css/DetalleProducto.css">
-  
+
   <script type="text/javascript">
     const productoData = {
       id: <?php echo json_encode($id_producto); ?>,
       nombre: <?php echo json_encode($nombre_producto); ?>,
       info: <?php echo json_encode($fila["producto_info"]); ?>,
-      precio: <?php echo json_encode($precio_bruto); ?>, 
+      precio: <?php echo json_encode($precio_bruto); ?>,
       artista: <?php echo json_encode($nombre_artista); ?>,
       imagen: <?php echo json_encode($ruta_imagen); ?>
     };
@@ -106,12 +106,13 @@ $conexion->close();
         <h5>Total</h5>
         <p id="Suma-Total-Precios">$0.00</p>
         <div class="Btn-Carrito">
-          <button class="Btn-Pagar">Pagar</button>
+          <a href="../Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+          <button class="Btn-Eliminar">Eliminar Productos</button>
         </div>
       </aside>
     </div>
   </nav>
-  
+
   <main id="Detalle-Producto-Contenedor">
     <section class="info-principal-producto">
       <div class="imagen-producto">
