@@ -1,14 +1,34 @@
+<?php session_start(); ?> 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Ropa Artistas de Trap</title>
+    <title>Tienda de Ropa Artistas de Trap - Iniciar Sesión</title>
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
-
+    
+    <style>
+        .mensaje-login {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +57,9 @@
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/Registro.html" class="btn-nav-der">Registrarse</a>
+            <a href="../Páginas/Login.php" class="btn-nav-der">
+                <?php echo isset($_SESSION['logeado']) ? "Perfil de " . $_SESSION['nombre_usuario'] : "Registrarse"; ?>
+            </a>
 
             <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
 
@@ -66,17 +88,32 @@
 
     <main id="Inicio-Sesion">
         <div id="Cont-Login">
-            <form id="Login-Form" action="" method="post">
-                <label id="Usuario">Correo electrónico o nombre de usuario</label>
+            
+            <?php if (isset($_SESSION['mensaje'])): ?>
+                <div class="mensaje-login mensaje-exito">
+                    <?php echo $_SESSION['mensaje']; ?>
+                </div>
+                <?php unset($_SESSION['mensaje']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="mensaje-login mensaje-error">
+                    <?php echo $_SESSION['error']; ?>
+                </div>
+                <?php unset($_SESSION['error']); ?>
+            <?php endif; ?>
+            <h2>Iniciar Sesión</h2>
+            <form id="Login-Form" action="Login_processor.php" method="post">
+                <label id="Usuario" for="usuario">Correo electrónico o nombre de usuario</label>
                 <input type="text" id="usuario" name="usuario" required>
 
-                <label id="Contraseña">Contraseña</label>
-                <input type="password" id="Contraseña" name="Contraseña" required>
+                <label id="Contraseña" for="Contrasena_login">Contraseña</label>
+                <input type="password" id="Contrasena_login" name="contrasena" required>
 
                 <button type="submit" id="Btn-Login">Iniciar Sesión</button>
             </form>
 
-            <p><a href="">No tengo cuenta. Regístrate</a></p>
+            <p><a href="Registro.php">No tengo cuenta. Regístrate</a></p>
 
             <hr id="Separador-Login">
 
@@ -96,7 +133,6 @@
         </div>
     </main>
 
-    </main>
     <footer>
         <div class="Footer-Cont">
             <div class="info-footer">

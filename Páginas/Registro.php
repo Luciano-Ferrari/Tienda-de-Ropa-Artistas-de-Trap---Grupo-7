@@ -1,0 +1,135 @@
+<?php session_start(); ?> 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa Artistas de Trap - Registro</title>
+    <link rel="stylesheet" href="../src/Css/Style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="../src/JavaScript/Script.js" defer></script>
+    
+    <style>
+        .mensaje-registro {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        </nav>
+
+    <main id="Inicio-Sesion">
+        <div id="Cont-Login">
+            
+            <?php if (isset($_SESSION['mensaje'])): ?>
+                <div class="mensaje-registro mensaje-exito">
+                    <?php echo $_SESSION['mensaje']; ?>
+                </div>
+                <?php unset($_SESSION['mensaje']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="mensaje-registro mensaje-error">
+                    <?php echo $_SESSION['error']; ?>
+                </div>
+                <?php unset($_SESSION['error']); ?>
+            <?php endif; ?>
+            <h2>Regístrate</h2>
+            <form id="Registro-Form" action="Registro_processor.php" method="post">
+                
+                <label for="nombre_usuario_reg">Nombre de usuario</label>
+                <input type="text" id="nombre_usuario_reg" name="nombre_usuario" required>
+
+                <label for="correo_reg">Correo electrónico</label>
+                <input type="email" id="correo_reg" name="usuario" required> 
+
+                <label for="Contrasena_reg">Contraseña</label>
+                <input type="password" id="Contrasena_reg" name="contrasena" required>
+
+                <button type="submit" id="Btn-Registro">Registrarme</button>
+            </form>
+
+            <p><a href="Login.php">Ya tengo cuenta. Iniciar sesión</a></p>
+
+            <hr id="Separador-Login">
+
+            <div id="Otros-Login">
+                <button class="btn-google">
+                    <img src="../src/img/google.png" alt="Google"><a href="">Iniciar sesión en Google</a>
+                </button>
+
+                <button class="btn-facebook">
+                    <img src="../src/img/facebook.png" alt="Facebook"><a href="">Iniciar sesión en Facebook</a>
+                </button>
+
+                <button class="btn-apple">
+                    <img src="../src/img/logotipo-de-apple.png" alt="Apple"><a href="">Iniciar sesión en Apple</a>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="Footer-Cont">
+            <div class="info-footer">
+                <div class="direccion">
+                    <p>DIRECCION <br>
+                        DR. NORBERTO QUIERNO COSTA 1209 <br>
+                        2B</p>
+                </div>
+
+                <div class="pais">
+                    <p>Argentina</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="Footer-Contacto">
+                <div class="redes">
+                    <div>
+                        <img src="../src/img/instagram.png" alt="Instagram">
+                        <p>@sebas.rzq09</p>
+                    </div>
+                    <div>
+                        <img src="../src/img/instagram.png" alt="Instagram">
+                        <p>@lixhca2</p>
+                    </div>
+                    <div>
+                        <img src="../src/img/instagram.png" alt="Instagram">
+                        <p>@trapshop_"247</p>
+                    </div>
+                </div>
+
+                <div class="logo-footer">
+                    <img src="../src/img/Trap-Footer.png" alt="Logo-Trap Footer">
+                </div>
+            </div>
+
+            <hr>
+
+            <p class="copyright">
+                © 2025 Trap Company malvados y asociados
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2025 a las 05:41:53
+-- Tiempo de generación: 26-11-2025 a las 06:24:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -204,6 +204,26 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (172, 7, 'Sticker de Milo j', '111', 1.00, '../src/img/Sticker-miloj-111.png', 'Accesorios'),
 (173, 7, 'Sticker de Milo j', 'Love', 1.00, '../src/img/SSticker-miloj-love.png', 'Accesorios');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `correo`, `contrasena`) VALUES
+(1, 'CRO', 'CRO@gmail.com', 'cro');
+
 --
 -- Índices para tablas volcadas
 --
@@ -222,6 +242,14 @@ ALTER TABLE `productos`
   ADD KEY `id_artista` (`id_artista`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
+  ADD UNIQUE KEY `correo` (`correo`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -236,6 +264,12 @@ ALTER TABLE `artistas`
 --
 ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
