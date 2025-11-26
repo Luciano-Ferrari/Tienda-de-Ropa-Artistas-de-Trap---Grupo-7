@@ -107,13 +107,15 @@ if ($resultado && $resultado->num_rows > 0) {
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/Login.php" class="btn-nav-der">
-                <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+            <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+                <a href="../Páginas/Logout.php" class="btn-nav-der">
                     <i class="bi bi-person"></i>
-                <?php else: ?>
+                </a>
+            <?php else: ?>
+                <a href="../Páginas/registro.php" class="btn-nav-der">
                     Registrarse
-                <?php endif; ?>
-            </a>
+                </a>
+            <?php endif; ?>
             <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
 
             <aside id="carritoLateral" class="panel-der">
