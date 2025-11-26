@@ -1182,13 +1182,13 @@ footer hr {
 }
 
 .pago-cont {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 40px;
-  max-width: 1250px;
-  margin: 120px auto;
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
+  width: 100%;
+  background-color: #f0eeee9c;
+  display: flex;
+  align-items: center;
+  padding: 150px 0px;
+  gap: 50px;
+  justify-content: center;
 }
 
 .pago-form {
@@ -1213,22 +1213,14 @@ footer hr {
 
 .pago-form input {
   width: 100%;
+  box-sizing: border-box;
+
   padding: 15px;
   border-radius: 12px;
   border: 1px solid #bcbcbc;
   margin-bottom: 22px;
   font-size: 16px;
-  outline: none;
   transition: border 0.2s ease;
-}
-
-.pago-form input:focus {
-  border-color: #727272;
-}
-
-.pago-venc-cvc {
-  display: flex;
-  gap: 20px;
 }
 
 .pago-resumen {
@@ -1244,6 +1236,11 @@ footer hr {
   font-size: 25px;
 }
 
+.pago-venc-cvc {
+  display: flex;
+  gap: 15px;
+}
+
 .resumen-cont-int {
   display: flex;
   gap: 15px;
@@ -1252,38 +1249,15 @@ footer hr {
   margin-bottom: 20px;
 }
 
-.product-titulo {
-  font-weight: 700;
-  font-size: 17px;
-}
-
-.product-info {
-  font-size: 14px;
-  opacity: 0.7;
-  margin: 4px 0;
-}
-
-.product-price {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 8px;
-}
-
 .total {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 19px;
-  font-weight: 700;
-  margin: 12px 0 25px;
+  font-size: 18px;
 }
 
 .total h6 {
   font-size: 20px;
-  margin: 0;
-}
-
-.total p {
   margin: 0;
 }
 
@@ -1294,20 +1268,19 @@ footer hr {
   border-radius: 12px;
   border: none;
   font-size: 18px;
-  font-weight: 700;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-family: "Bricolage Grotesque", sans-serif;
   transition: all 0.2s ease;
 }
 
 .btn-realizar {
-  background: #4f54ff;
+  background: #535353;
   color: white;
 }
 
 .btn-realizar:hover {
-  background: #3438be;
+  background: #c4c4c4;
 }
 
 .btn-cancelar {
@@ -1320,8 +1293,154 @@ footer hr {
 }
 
 .legal {
+  color: #000000ab;
   font-size: 12px;
-  opacity: 0.7;
   margin-top: 10px;
-  line-height: 1.4;
+}
+
+
+.pago-form input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pago-venc-cvc input {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1170px) {
+
+  .pago-cont {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 70px 25px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .pago-form,
+  .pago-resumen {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .pago-venc-cvc {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .pago-form,
+  .pago-resumen {
+    max-width: 500px;
+    padding: 28px;
+  }
+
+  .pago-form h2 {
+    font-size: 26px;
+  }
+
+  .pago-resumen h3 {
+    font-size: 24px;
+  }
+
+  .pago-venc-cvc {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .pago-venc-cvc input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .btn-realizar,
+  .btn-cancelar {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .pago-form,
+  .pago-resumen {
+    max-width: 420px;
+    padding: 23px;
+  }
+
+  .pago-form h2,
+  .pago-resumen h3 {
+    font-size: 23px;
+  }
+
+  .total {
+    font-size: 15px;
+  }
+
+  .btn-realizar,
+  .btn-cancelar {
+    font-size: 15px;
+    padding: 11px;
+  }
+}
+
+@media (max-width: 490px) {
+
+  .pago-form,
+  .pago-resumen {
+    max-width: 360px;
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .pago-form h2,
+  .pago-resumen h3 {
+    font-size: 20px;
+  }
+
+  .pago-form label {
+    font-size: 14px;
+  }
+
+  .pago-form input {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .btn-realizar,
+  .btn-cancelar {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .pago-form,
+  .pago-resumen {
+    max-width: 95%;
+    padding: 14px;
+  }
+
+  .pago-form h2 {
+    font-size: 18px;
+  }
+
+  .pago-form input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-realizar,
+  .btn-cancelar {
+    font-size: 13px;
+    padding: 9px;
+  }
 }
