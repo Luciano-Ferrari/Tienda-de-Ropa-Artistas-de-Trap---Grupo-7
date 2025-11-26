@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2025 a las 05:01:11
+-- Tiempo de generación: 26-11-2025 a las 05:41:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,10 +41,10 @@ INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
 (1, 'Duki', '../src/img/Duki.png'),
 (2, 'YSY A', '../src/img/Ysy.png'),
 (3, 'Trueno', '../src/img/Trueno.png'),
-(4, 'Neo Pistea', '../src/img/Duki.png'),
+(4, 'Neo Pistea', 'HTML'),
 (5, 'C.R.O.', '../src/img/CRO.jpg'),
 (6, 'Khea', 'HTML'),
-(7, 'Milo j', NULL),
+(7, 'Milo j', '../src/img/Miloj.png'),
 (8, 'Barderos', '../src/img/Duki.png'),
 (9, 'Modo Diablo', '../src/img/ModoDiablo.png'),
 (10, 'Wos', '../src/img/Wos.png');
@@ -178,7 +178,31 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (136, 3, 'Remera de Trueno', 'Boca Juniors', 20.00, '../src/img/Remera-trueno-boca.png', 'Remeras'),
 (137, 3, 'Remera de Trueno', 'Atrevido', 20.00, '../src/img/Remera-trueno-atrevido.png', 'Remeras'),
 (138, 3, 'Remera de Trueno', 'Bien o mal', 20.00, '../src/img/Remera-trueno-bnomal.png', 'Remeras'),
-(139, 3, 'Remera de Trueno', 'Boca Vintage', 20.00, '../src/img/Remera-trueno-bocavintage.png', 'Remeras');
+(139, 3, 'Remera de Trueno', 'Boca Vintage', 20.00, '../src/img/Remera-trueno-bocavintage.png', 'Remeras'),
+(150, 7, 'Buzo de Milo j', 'Overside', 30.00, '../src/img/Buzo-Miloj-overside.png', 'Buzos'),
+(151, 7, 'Remera de Milo j', 'Overside', 20.00, '../src/img/Remera-Miloj-overside.png', 'Remeras'),
+(152, 7, 'Remera de Milo j', '166', 20.00, '../src/img/Remera-Miloj-166.png', 'Remeras'),
+(153, 7, 'Remera de Milo j', 'Morón', 20.00, '../src/img/Remera-Miloj-moron.png', 'Remeras'),
+(154, 7, 'Remera de Milo j', 'Argentina', 20.00, '../src/img/Remera-Miloj-argentina.png', 'Remeras'),
+(155, 7, 'Remera de Milo j', '111', 20.00, '../src/img/Remera-Miloj-111.png', 'Remeras'),
+(156, 7, 'Remera de Milo j', 'Boxy Fit', 20.00, '../src/img/Remera-miloj-boxyfit.png', 'Remeras'),
+(157, 7, 'Gorra de Milo j', 'Contorno Blanco', 10.00, '../src/img/Gorra-miloj-blanco.png', 'Accesorios'),
+(158, 7, 'Pantalon de Milo j', 'Negro', 25.00, '../src/img/Pantalon-Miloj-negro.png', 'Accesorios'),
+(159, 7, 'Medias de Milo j', 'Mierda', 10.00, '../src/img/Medias-miloj-mierda.png', 'Accesorios'),
+(160, 7, 'Buzo de Milo j', '511', 30.00, '../src/img/Buzo-miloj-511.png', 'Buzos'),
+(161, 7, 'Vinilo de Milo j', '166', 80.00, '../src/img/Vinilo-miloj-166.png', 'Accesorios'),
+(162, 7, 'Vinilo de Milo j', '511', 80.00, '../src/img/Vinilo-miloj-511.png', 'Accesorios'),
+(163, 7, 'Vinilo de Milo j', 'En Dormir Sin Madrid', 80.00, '../src/img/Vinilo-miloj-endormirsinmadrid.png', 'Accesorios'),
+(164, 7, 'Vinilo de Milo j', 'La Vida Era Más Corta', 80.00, '../src/img/Vinilo-miloj-lavidaeramascorta.png', 'Accesorios'),
+(165, 7, 'Vinilo de Milo j', '166 Deluxe', 80.00, '../src/img/Vinilo-miloj-166deluxe.png', 'Accesorios'),
+(166, 7, 'Gorra de Milo j', '111', 10.00, '../src/img/Gorra-miloj-111.png', 'Accesorios'),
+(167, 7, 'Cadena de Milo j', '111', 10.00, '../src/img/Cadena-miloj-111.png', 'Accesorios'),
+(168, 7, 'Vinilo de Milo j', '111', 80.00, '../src/img/Vinilo-miloj-111.png', 'Accesorios'),
+(169, 7, 'Sticker de Milo j', 'Ahora Estoy en el Mic', 1.00, '../src/img/Sticker-miloj-ahoraestoyenelmic.png', 'Accesorios'),
+(170, 7, 'Sticker de Milo j', '166', 1.00, '../src/img/Sticker-miloj-166.png', 'Accesorios'),
+(171, 7, 'Sticker de Milo j', 'Mil Ojotas', 1.00, '../src/img/Sticker-miloj-milojotas.png', 'Accesorios'),
+(172, 7, 'Sticker de Milo j', '111', 1.00, '../src/img/Sticker-miloj-111.png', 'Accesorios'),
+(173, 7, 'Sticker de Milo j', 'Love', 1.00, '../src/img/SSticker-miloj-love.png', 'Accesorios');
 
 --
 -- Índices para tablas volcadas
@@ -211,7 +235,7 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- Restricciones para tablas volcadas
