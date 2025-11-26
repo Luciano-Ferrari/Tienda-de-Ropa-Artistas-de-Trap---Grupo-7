@@ -1,3 +1,6 @@
+<?php
+session_start(); // Iniciar la sesión para poder usar $_SESSION
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,14 +39,13 @@
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/Registro.php" class="btn-nav-der">
+            <a href="../Páginas/<?php echo (isset($_SESSION['logeado']) && $_SESSION['logeado']) ? 'Logout.php' : 'Registro.php'; ?>" class="btn-nav-der">
                 <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
                     <i class="bi bi-person"></i>
                 <?php else: ?>
                     Registrarse
                 <?php endif; ?>
             </a>
-
             <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
 
             <aside id="carritoLateral" class="panel-der">
@@ -97,16 +99,20 @@
                 <h3>Resumen del pedido</h3>
 
                 <div class="resumen-cont-int">
-                    <div>
-                        <p class="product-titulo"></p>
-                        <p class="product-info"></p>
-                        <p class="product-price"></p>
+                    <div id="Productos">
+                        <ul id="Lista-Productos">
+                            </ul>
                     </div>
-                </div>
+                    <hr>
+                    <div>
+                        <ul id="Lista-Nombre-Precio">
+                            </ul>
+                    </div>
+                    </div>
 
                 <div class="total">
                     <h6>Total</h6>
-                    <p></p>
+                    <p id="Suma-Total-Precios"></p>
                 </div>
 
                 <button class="btn-realizar">Realizar pedido</button>

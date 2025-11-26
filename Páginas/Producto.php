@@ -91,8 +91,15 @@ $conexion->close();
     </div>
 
     <div class="nav-der">
-      <a href="../Páginas/Registro.php" class="btn-nav-der">Registrarse</a>
-
+      <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+        <a href="../Páginas/Logout.php" class="btn-nav-der">
+          <i class="bi bi-person"></i>
+        </a>
+      <?php else: ?>
+        <a href="../Páginas/registro.php" class="btn-nav-der">
+          Registrarse
+        </a>
+      <?php endif; ?>
       <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
       <aside id="carritoLateral" class="panel-der">
         <h2>Carrito</h2>

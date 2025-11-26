@@ -5,6 +5,6 @@ $_SESSION = array();
 
 session_destroy();
 
-header("Location: ../Index.html"); 
+header("Location: ../Index.html?session_cleared=1"); 
 exit;
 ?>
