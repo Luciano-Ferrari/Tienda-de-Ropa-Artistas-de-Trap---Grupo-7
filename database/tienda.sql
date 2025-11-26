@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2025 a las 06:24:02
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Nov 26, 2025 at 03:21 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda`
+-- Database: `tienda`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `artistas`
+-- Table structure for table `artistas`
 --
 
 CREATE TABLE `artistas` (
@@ -34,25 +34,25 @@ CREATE TABLE `artistas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `artistas`
+-- Dumping data for table `artistas`
 --
 
 INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
 (1, 'Duki', '../src/img/Duki.png'),
 (2, 'YSY A', '../src/img/Ysy.png'),
 (3, 'Trueno', '../src/img/Trueno.png'),
-(4, 'Neo Pistea', 'HTML'),
+(4, 'Neo Pistea', '../src/img/Neo.png'),
 (5, 'C.R.O.', '../src/img/CRO.jpg'),
-(6, 'Khea', 'HTML'),
+(6, 'Khea', '../src/img/Khea.png'),
 (7, 'Milo j', '../src/img/Miloj.png'),
-(8, 'Barderos', '../src/img/Duki.png'),
+(8, 'Barderos', '../src/img/Barderos.png'),
 (9, 'Modo Diablo', '../src/img/ModoDiablo.png'),
 (10, 'Wos', '../src/img/Wos.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -66,7 +66,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `precio`, `ruta_imagen`, `categoria`) VALUES
@@ -118,14 +118,6 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (56, 1, 'Sticker Duki Holográfico', 'Sticker con retrato de Duki en acabado iridiscente/holográfico.', 19.99, 'sticker-duki-2.jpg', 'Sticker'),
 (57, 1, 'Sticker Duki Retrato', 'Sticker con retrato a color de Duki (Camisa negra).', 19.99, 'sticker-duki-3.jpg', 'Sticker'),
 (58, 1, 'Llavero Logo Duki', 'Llavero metálico con el diseño del logo geométrico de Duki.', 29.99, 'Llavero-Duki-1.png', 'Llavero'),
-(68, 9, 'Remera Chain Roquero (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Mi Chain de Roque\" (Duki x C.R.O.).', 59.99, 'Remera-cro-chainroque.png', 'Remera'),
-(69, 9, 'Remera Fuck Luv (Duki x C.R.O.)', 'Remera negra con el diseño de la portada del single \"Fuck Luv\" (Duki x C.R.O.), diseño glitch.', 59.99, 'Remera-cro-fucklove.jpg', 'Remera'),
-(70, 9, 'Remera Retrato C.R.O. (Gorro)', 'Remera negra oversized con retrato en blanco y negro de C.R.O. con gorro.', 64.99, 'Remera-cro-cara.jpg', 'Remera'),
-(71, 9, 'Remera Retrato C.R.O. (Gris)', 'Remera gris con foto de C.R.O. en musculosa y gorra.', 64.99, 'Remera-cro-gris.png', 'Remera'),
-(72, 9, 'Remera Retrato C.R.O. (Tiempo)', 'Remera negra con retrato en blanco y negro de C.R.O. fumando y usando gorra.', 59.99, 'Remera-cro-tiempo.png', 'Remera'),
-(73, 9, 'Remera C.R.O. Alas', 'Remera negra con logo \"C.R.O.\" blanco, alas de demonio y halo.', 54.99, 'Remera-cro-alas.png', 'Remera'),
-(74, 9, 'Remera C.R.O. Trucha (Logo Cadena)', 'Remera negra con diseño de cadena y dije de logo \"C.R.O.\" alado.', 54.99, 'Remera-cro-trucha.png', 'Remera'),
-(75, 9, 'Crop Top C.R.O. Luna', 'Remera corta para mujer con diseño de luna y estrellas \"C.R.O.\". ', 49.99, 'Remera-cro-mujer.png', 'Remera'),
 (77, 5, 'Remera de C.R.O', 'Nirvana', 20.00, '../src/img/Remera-cro-nirvana.png', 'Remera'),
 (78, 5, 'Remera de C.R.O', 'Alas', 20.00, '../src/img/Remera-cro-alas.png', 'Remera'),
 (79, 5, 'Remera de C.R.O', 'Fuck love', 20.00, '../src/img/Remera-cro-fucklove.png', 'Remera'),
@@ -202,12 +194,109 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 (170, 7, 'Sticker de Milo j', '166', 1.00, '../src/img/Sticker-miloj-166.png', 'Accesorios'),
 (171, 7, 'Sticker de Milo j', 'Mil Ojotas', 1.00, '../src/img/Sticker-miloj-milojotas.png', 'Accesorios'),
 (172, 7, 'Sticker de Milo j', '111', 1.00, '../src/img/Sticker-miloj-111.png', 'Accesorios'),
-(173, 7, 'Sticker de Milo j', 'Love', 1.00, '../src/img/SSticker-miloj-love.png', 'Accesorios');
+(173, 7, 'Sticker de Milo j', 'Love', 1.00, '../src/img/SSticker-miloj-love.png', 'Accesorios'),
+(174, 4, 'Remera de Neo Pistea', 'Retrato', 20.00, '../src/img/Remera-Neo-cara.png', 'Remeras'),
+(175, 4, 'Remera de Neo Pistea', 'Culto', 20.00, '../src/img/Remera-Neo-Culto.png', 'Remeras'),
+(176, 4, 'Remera de Neo Pistea', 'Neo Diablo', 20.00, '../src/img/Remera-Neo-NeoDiablo.png', 'Remeras'),
+(177, 4, 'Remera de Neo Pistea', 'Overside', 20.00, '../src/img/Remera-Neo-overside.png', 'Remeras'),
+(178, 10, 'Remera de Wos', 'BoxyFit', 20.00, '../src/img/Ropa-Wos-BoxyFit.png', 'Remeras'),
+(179, 10, 'Remera de Wos', 'Overside4', 20.00, '../src/img/Remera-Wos-Overside4.png', 'Remeras'),
+(180, 10, 'Remera de Wos', 'x3', 20.00, '../src/img/Remera-Wos-x3.png', 'Remeras'),
+(181, 10, 'Remera de Wos', 'Cara', 20.00, '../src/img/Remera-Wos-Cara.png', 'Remeras'),
+(182, 10, 'Remera de Wos', 'Escenario', 20.00, '../src/img/Remera-Wos-Escenario.png', 'Remeras'),
+(183, 10, 'Remera de Wos', 'Negro', 20.00, '../src/img/Remera-Wos-Negro.png', 'Remeras'),
+(184, 10, 'Remera de Wos', 'OscuroExtasis', 20.00, '../src/img/Remera-Wos-OscuroExtasis.png', 'Remeras'),
+(185, 10, 'Remera de Wos', 'Overside', 20.00, '../src/img/Remera-Wos-Overside.png', 'Remeras'),
+(186, 10, 'Remera de Wos', 'Overside2', 20.00, '../src/img/Remera-Wos-Overside2.png', 'Remeras'),
+(187, 10, 'Remera de Wos', 'Overside3', 20.00, '../src/img/Remera-Wos-Overside3.png', 'Remeras'),
+(188, 10, 'Buzo de Wos', 'buzo-wos', 50.00, '../src/img/buzo-wos.png', 'Buzos'),
+(189, 10, 'Buzo de Wos', 'buzo-wos2', 50.00, '../src/img/buzo-wos2.png', 'Buzos'),
+(190, 4, 'Cuadro de Neo Pistea', 'punkdemia', 30.00, '../src/img/Cuadro-neo-punkdemia.png', 'Accesorios'),
+(191, 4, 'Cuadro de Neo Pistea', 'culto', 30.00, '../src/img/Cuadro-neo-culto.png', 'Accesorios'),
+(192, 4, 'Cuadro de Neo Pistea', 'culto2', 30.00, '../src/img/Cuadro-neo-culto2.png', 'Accesorios'),
+(193, 4, 'Vinilo de Neo Pistea', 'tumbandoelclub', 80.00, '../src/img/Vinilo-neo-tumbandoelclub.png', 'Accesorios'),
+(194, 4, 'Vinilo de Neo Pistea', 'culto', 80.00, '../src/img/Vinilo-neo-culto.png', 'Accesorios'),
+(195, 4, 'Vinilo de Neo Pistea', 'culto2', 80.00, '../src/img/Vinilo-neo-culto2.png', 'Accesorios'),
+(196, 4, 'Vinilo de Neo Pistea', 'neo', 80.00, '../src/img/Vinilo-neo-neo.png', 'Accesorios'),
+(197, 4, 'Vinilo de Neo Pistea', 'punkdemia', 80.00, '../src/img/Vinilo-neo-punkdemia.png', 'Accesorios'),
+(198, 4, 'Cadena de Neo Pistea', 'culto', 10.00, '../src/img/Cadena-neo-culto.png', 'Accesorios'),
+(199, 4, 'Almohada de Neo Pistea', 'jesus', 12.00, '../src/img/Almohada-neo-jesus.png', 'Accesorios'),
+(205, 3, 'Remera de Trueno', 'feelme', 20.00, '../src/img/Remera-trueno-feelme.png', 'Remeras'),
+(208, 3, 'Remera de Trueno', 'EUBdeluxe', 20.00, '../src/img/Remera-trueno-EUBdeluxe.png', 'Remeras'),
+(209, 3, 'Remera de Trueno', 'Salamandra', 20.00, '../src/img/Remera-trueno-Salamandra.png', 'Remeras'),
+(210, 3, 'Remera de Trueno', 'Salamandra', 20.00, '../src/img/Remera-trueno-Salamandra.png', 'Remeras'),
+(211, 3, 'Gorra de Trueno', 'pai', 1.00, '../src/img/Gorra-trueno-pai.png', 'Accesorios'),
+(212, 3, 'Vinilo de Trueno', 'ultimobaile', 80.00, '../src/img/Vinilo-Trueno-ultimobaile.png', 'Accesorios'),
+(213, 3, 'Vinilo de Trueno', 'atrevido', 80.00, '../src/img/Vinilo-Trueno-atrevido.png', 'Accesorios'),
+(214, 3, 'Vinilo de Trueno', 'bienomal', 80.00, '../src/img/Vinilo-Trueno-bienomal.png', 'Accesorios'),
+(215, 3, 'Vinilo de Trueno', 'Feelme', 80.00, '../src/img/Vinilo-Trueno-Feelme.png', 'Accesorios'),
+(216, 3, 'Vinilo de Trueno', 'mafiesto', 80.00, '../src/img/Vinilo-Trueno-mafiesto.png', 'Accesorios'),
+(217, 3, 'Cuadro de Trueno', 'Ultimobaile', 30.00, '../src/img/Cuadro-Trueno-Ultimobaile.png', 'Accesorios'),
+(218, 3, 'Cuadro de Trueno', 'Bien o mal', 30.00, '../src/img/Cuadro-Trueno-Bien o mal.png', 'Accesorios'),
+(219, 3, 'Cadena de Trueno', 'pai', 10.00, '../src/img/Cadena-Trueno-pai.png', 'Accesorios'),
+(220, 3, 'Sticker de Trueno', 'elultimobaile', 1.00, '../src/img/Sticker-trueno-elultimobaile.png', 'Accesorios'),
+(221, 3, 'Sticker de Trueno', 'gangstalove', 1.00, '../src/img/Sticker-trueno-gangstalove.png', 'Accesorios'),
+(222, 3, 'Sticker de Trueno', 'pai', 1.00, '../src/img/Sticker-trueno-pai.png', 'Accesorios'),
+(223, 3, 'Sticker de Trueno', 'pai2', 1.00, '../src/img/Sticker-trueno-pai2.png', 'Accesorios'),
+(224, 3, 'Pack de Trueno', 'pai', 1.00, '../src/img/Pack-trueno-pai.png', 'Accesorios'),
+(225, 6, 'Remera de Khea', 'overside1', 20.00, '../src/img/Remera-Khea-overside1.png', 'Remeras'),
+(226, 6, 'Remera de Khea', 'trapicheo', 20.00, '../src/img/Remera-Khea-trapicheo.png', 'Remeras'),
+(227, 6, 'Remera de Khea', 'Violeta', 20.00, '../src/img/Remera-Khea-Violeta.png', 'Remeras'),
+(228, 6, 'Remera de Khea', 'BoxyFit', 20.00, '../src/img/Remera-Khea-BoxyFit.png', 'Remeras'),
+(229, 6, 'Remera de Khea', 'buho', 20.00, '../src/img/Remera-Khea-buho.png', 'Remeras'),
+(230, 6, 'Remera de Khea', 'overside', 20.00, '../src/img/Remera-Khea-overside.png', 'Remeras'),
+(231, 6, 'Vinilo de Khea', '100mg', 80.00, '../src/img/Vinilo-khea-100mg.png', 'Accesorios'),
+(232, 6, 'Vinilo de Khea', 'B.U.H.O', 80.00, '../src/img/Vinilo-khea-B.U.H.O.png', 'Accesorios'),
+(233, 6, 'Vinilo de Khea', 'eldon', 80.00, '../src/img/Vinilo-khea-eldon.png', 'Accesorios'),
+(234, 6, 'Vinilo de Khea', 'serotonina(delux)', 80.00, '../src/img/Vinilo-khea-serotonina(delux).png', 'Accesorios'),
+(235, 6, 'Vinilo de Khea', 'serotonina', 80.00, '../src/img/Vinilo-khea-serotonina.png', 'Accesorios'),
+(236, 6, 'Vinilo de Khea', 'trapicheo', 80.00, '../src/img/Vinilo-khea-trapicheo.png', 'Accesorios'),
+(237, 6, 'Cuadro de Khea', 'eldon', 30.00, '../src/img/Cuadro-Khea-eldon.png', 'Accesorios'),
+(238, 6, 'Cuadro de Khea', 'serotonina', 30.00, '../src/img/Cuadro-Khea-serotonina.png', 'Accesorios'),
+(239, 6, 'Cuadro de Khea', 'trapicheo', 30.00, '../src/img/Cuadro-Khea-trapicheo.png', 'Accesorios'),
+(240, 6, 'Cuadro de Khea', 'bzrpsession', 30.00, '../src/img/Cuadro-Khea-bzrpsession.png', 'Accesorios'),
+(241, 6, 'Cadena de Khea', 'anashei', 10.00, '../src/img/Cadena-khea-anashei.png', 'Accesorios'),
+(242, 6, 'Gorro de Khea', 'negro', 10.00, '../src/img/Gorro-khea-negro.png', 'Accesorios'),
+(243, 8, 'Remera de Barderos', 'mujer', 20.00, '../src/img/Remera-barderos-mujer.png', 'Remeras'),
+(244, 8, 'Remera de Barderos', 'negra', 20.00, '../src/img/Remera-barderos-negra.png', 'Remeras'),
+(245, 8, 'Buzo de Barderos', 'puredrug', 50.00, '../src/img/Buzo-barderos-puredrug.png', 'Buzos'),
+(246, 8, 'Gorra de Barderos', 'negra', 10.00, '../src/img/Gorra-barderos-negra.png', 'Accesorios'),
+(247, 8, 'Gorro de Barderos', 'negro', 10.00, '../src/img/Gorro-Barderos-negro.png', 'Accesorios'),
+(248, 8, 'Medias de Barderos', 'Negras', 10.00, '../src/img/Medias-Barderos-Negras.png', 'Accesorios'),
+(249, 8, 'Medias de Barderos', 'Blancas', 10.00, '../src/img/Medias-Barderos-Blancas.png', 'Accesorios'),
+(250, 8, 'Vinilo de Barderos', 'Ahoraesreligion', 80.00, '../src/img/Vinilo-barderos-Ahoraesreligion.png', 'Accesorios'),
+(251, 8, 'Vinilo de Barderos', 'inmortales', 80.00, '../src/img/Vinilo-barderos-inmortales.png', 'Accesorios'),
+(252, 8, 'Vinilo de Barderos', 'PureDrug', 80.00, '../src/img/Vinilo-barderos-PureDrug.png', 'Accesorios'),
+(253, 8, 'Sticker de Barderos', 'plastificado', 1.00, '../src/img/Sticker-barderos-plastificado.png', 'Accesorios'),
+(254, 9, 'Remera de Modo Diablo', 'Trio', 20.00, '../src/img/Ropa-MD-Trio.png', 'Remeras'),
+(255, 9, 'Remera de Modo Diablo', 'trio2', 20.00, '../src/img/Ropa-MD-trio2.png', 'Remeras'),
+(256, 9, 'Vinilo de Modo Diablo', 'quavo', 80.00, '../src/img/Vinilo-mododiablo-quavo.png', 'Accesorios'),
+(257, 9, 'Vinilo de Modo Diablo', 'todonegro', 80.00, '../src/img/Vinilo-mododiablo-todonegro.png', 'Accesorios'),
+(258, 9, 'Vinilo de Modo Diablo', 'trapnsport', 80.00, '../src/img/Vinilo-mododiablo-trapnsport.png', 'Accesorios'),
+(259, 9, 'Vinilo de Modo Diablo', 'tumbandoelclub', 80.00, '../src/img/Vinilo-mododiablo-tumbandoelclub.png', 'Accesorios'),
+(260, 9, 'Vinilo de Modo Diablo', 'Uh', 80.00, '../src/img/Vinilo-mododiablo-Uh.png', 'Accesorios'),
+(261, 9, 'Vinilo de Modo Diablo', 'vueltaalaluna', 80.00, '../src/img/Vinilo-mododiablo-vueltaalaluna.png', 'Accesorios'),
+(262, 9, 'Vinilo de Modo Diablo', 'laclase', 80.00, '../src/img/Vinilo-mododiablo-laclase.png', 'Accesorios'),
+(263, 9, 'Cuadro de Modo Diablo', 'skere', 30.00, '../src/img/Cuadro-mododiablo-skere.png', 'Accesorios'),
+(264, 9, 'Cuadro de Modo Diablo', 'antezana247', 30.00, '../src/img/Cuadro-mododiablo-antezana247.png', 'Accesorios'),
+(265, 9, 'Gorro de Modo Diablo', 'fuck', 10.00, '../src/img/Gorro-mododiablo-fuck.png', 'Accesorios'),
+(266, 10, 'Sticker de Wos', 'anashe', 1.00, '../src/img/Sticker-wos-anashe.png', 'Accesorios'),
+(267, 10, 'Sticker de Wos', 'caravana', 1.00, '../src/img/Sticker-wos-caravana.png', 'Accesorios'),
+(268, 10, 'Sticker de Wos', 'edgy', 1.00, '../src/img/Sticker-wos-edgy.png', 'Accesorios'),
+(269, 10, 'Sticker de Wos', 'oscuroextasis', 1.00, '../src/img/Sticker-wos-oscuroextasis.png', 'Accesorios'),
+(270, 10, 'Vinilo de Wos', 'trespuntossuspensivos', 80.00, '../src/img/Vinilo-wos-trespuntossuspensivos.png', 'Accesorios'),
+(271, 10, 'Vinilo de Wos', 'caravana', 80.00, '../src/img/Vinilo-wos-caravana.png', 'Accesorios'),
+(272, 10, 'Vinilo de Wos', 'conciertoenracing', 80.00, '../src/img/Vinilo-wos-conciertoenracing.png', 'Accesorios'),
+(273, 10, 'Vinilo de Wos', 'descartable', 80.00, '../src/img/Vinilo-wos-descartable.png', 'Accesorios'),
+(274, 10, 'Vinilo de Wos', 'oscuroextasis', 80.00, '../src/img/Vinilo-wos-oscuroextasis.png', 'Accesorios'),
+(275, 10, 'Cuadro de Wos', 'oscuroextasis', 30.00, '../src/img/cuadro-wos-oscuroextasis.png', 'Accesorios'),
+(276, 10, 'Cuadro de Wos', 'caravana', 30.00, '../src/img/cuadro-wos-caravana.png', 'Accesorios'),
+(277, 10, 'Cuadro de Wos', 'descartable', 30.00, '../src/img/cuadro-wos-descartable.png', 'Accesorios');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -218,31 +307,32 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `correo`, `contrasena`) VALUES
-(1, 'CRO', 'CRO@gmail.com', 'cro');
+(1, 'CRO', 'CRO@gmail.com', 'cro'),
+(7, 'luciano', 'ferrari@gmail', 'cabral');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `artistas`
+-- Indexes for table `artistas`
 --
 ALTER TABLE `artistas`
   ADD PRIMARY KEY (`id_artista`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `id_artista` (`id_artista`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
@@ -250,33 +340,33 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `correo` (`correo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `artistas`
+-- AUTO_INCREMENT for table `artistas`
 --
 ALTER TABLE `artistas`
   MODIFY `id_artista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `productos`
+-- Constraints for table `productos`
 --
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artistas` (`id_artista`);
