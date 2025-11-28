@@ -66,7 +66,7 @@ $conexion->close();
 </head>
 
 <body>
-  <nav class="nav-minimal">
+  <nav>
     <div class="nav-izq">
       <div class="Menu-Desplegable">
         <img src="../src/img/82cb671fe93aec295a64e6810373d6dba70ff39c.png" alt="Menú" id="btnMenu">
@@ -91,29 +91,42 @@ $conexion->close();
     </div>
 
     <div class="nav-der">
+
       <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
-        <a href="../Páginas/Logout.php" class="btn-nav-der">
+
+        <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Profile.php" class="btn-nav-der">
           <i class="bi bi-person"></i>
         </a>
+
       <?php else: ?>
-        <a href="../Páginas/registro.php" class="btn-nav-der">
+
+        <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Registro.php" class="btn-nav-der">
           Registrarse
         </a>
+
       <?php endif; ?>
-      <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
+
+      <img src="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg"
+        alt="Carrito" id="Btn-Carrito">
+
       <aside id="carritoLateral" class="panel-der">
         <h2>Carrito</h2>
+
         <div id="Productos">
           <ul id="Lista-Productos"></ul>
         </div>
+
         <hr>
+
         <div>
           <ul id="Lista-Nombre-Precio"></ul>
         </div>
+
         <h5>Total</h5>
-        <p id="Suma-Total-Precios">$0.00</p>
+        <p id="Suma-Total-Precios">$</p>
+
         <div class="Btn-Carrito">
-          <a href="../Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+          <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
           <button class="Btn-Eliminar">Eliminar Productos</button>
         </div>
       </aside>

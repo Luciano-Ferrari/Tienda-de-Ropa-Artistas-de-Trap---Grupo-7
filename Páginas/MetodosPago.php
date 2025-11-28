@@ -39,14 +39,23 @@ session_start();
         </div>
 
         <div class="nav-der">
-            <a href="../Páginas/<?php echo (isset($_SESSION['logeado']) && $_SESSION['logeado']) ? 'Logout.php' : 'Registro.php'; ?>" class="btn-nav-der">
-                <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+
+            <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
+
+                <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Profile.php" class="btn-nav-der">
                     <i class="bi bi-person"></i>
-                <?php else: ?>
+                </a>
+
+            <?php else: ?>
+
+                <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Registro.php" class="btn-nav-der">
                     Registrarse
-                <?php endif; ?>
-            </a>
-            <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" alt="Carrito" id="Btn-Carrito">
+                </a>
+
+            <?php endif; ?>
+
+            <img src="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg"
+                alt="Carrito" id="Btn-Carrito">
 
             <aside id="carritoLateral" class="panel-der">
                 <h2>Carrito</h2>
@@ -65,7 +74,8 @@ session_start();
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <a href="../Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+                    <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/MetodosPago.php"
+                        class="Btn-Pagar">Pagar</a>
                     <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>
@@ -101,14 +111,14 @@ session_start();
                 <div class="resumen-cont-int">
                     <div id="Productos">
                         <ul id="Lista-Productos">
-                            </ul>
+                        </ul>
                     </div>
                     <hr>
                     <div>
                         <ul id="Lista-Nombre-Precio">
-                            </ul>
+                        </ul>
                     </div>
-                    </div>
+                </div>
 
                 <div class="total">
                     <h6>Total</h6>

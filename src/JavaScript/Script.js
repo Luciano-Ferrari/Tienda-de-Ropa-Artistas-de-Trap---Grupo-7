@@ -116,9 +116,8 @@ const renderizarCarrito = () => {
         li.classList.add("item-carrito");
         li.innerHTML = `
             <span class="cantidad">${producto.cantidad}x</span> 
-            <span class="nombre-producto-carrito"> ${producto.nombre} ${
-          producto.info ? `(${producto.info})` : ""
-        }</span>
+            <span class="nombre-producto-carrito"> ${producto.nombre} ${producto.info ? `(${producto.info})` : ""
+          }</span>
             <span class="precio-producto-carrito">$${subtotal.toFixed(2)}</span>
           `;
         listaProductos.appendChild(li);
@@ -231,3 +230,129 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", renderizarCarrito);
+
+/*Java del Perfil*/
+/* ========= MODAL CAMPOS ========= */
+
+function abrirModal(titulo, campo, valorActual) {
+    document.getElementById("Modal-Fondo").style.display = "block";
+
+    const modal = document.getElementById("Modal-Perfil");
+    modal.classList.add("activo");
+
+    document.getElementById("Modal-Titulo").innerText = titulo;
+    document.getElementById("Modal-Label").innerText = titulo;
+    document.getElementById("modalCampo").value = campo;
+    document.getElementById("modalInput").value = valorActual;
+}
+
+document.getElementById("Cerrar-Modal").addEventListener("click", () => {
+    document.getElementById("Modal-Fondo").style.display = "none";
+    document.getElementById("Modal-Perfil").classList.remove("activo");
+});
+
+/* ========= MODAL CONTRASEÑA ========= */
+
+function abrirModalContrasena() {
+    document.getElementById("Modal-Fondo").style.display = "block";
+    document.getElementById("Modal-Contrasena").classList.add("activo");
+}
+
+function cerrarModalContrasena() {
+    document.getElementById("Modal-Fondo").style.display = "none";
+    document.getElementById("Modal-Contrasena").classList.remove("activo");
+}
+
+/* ========= VER PASSWORD ========= */
+
+function verPassword(icono, idInput) {
+    const input = document.getElementById(idInput);
+
+    if (input.type === "password") {
+        input.type = "text";
+        icono.classList.replace("bi-eye-slash", "bi-eye");
+    } else {
+        input.type = "password";
+        icono.classList.replace("bi-eye", "bi-eye-slash");
+    }
+}
+
+/* ========= ELIMINAR DIRECCIÓN ========= */
+
+function eliminarDireccion() {
+    if (confirm("¿Seguro que querés eliminar tu dirección?")) {
+        
+        // Cuando elimina la dirección → SACAR lápices
+        localStorage.setItem("modoEdicionActivo", "false");
+
+        window.location.href = "eliminar_direc.php";
+    }
+}
+
+/* ========= MODO EDICIÓN ========= */
+
+const btnEditar = document.getElementById("Btn-Editar-Perfil");
+const contPerfil = document.getElementById("Cont-Perfil");
+
+function activarModoEdicion() {
+    contPerfil.classList.add("modo-edicion");
+    btnEditar.textContent = "Guardar Perfil";
+    localStorage.setItem("modoEdicionActivo", "true");
+}
+
+function desactivarModoEdicion() {
+    contPerfil.classList.remove("modo-edicion");
+    btnEditar.textContent = "Editar Perfil";
+    localStorage.setItem("modoEdicionActivo", "false");
+}
+
+/* ========= BOTÓN EDITAR PERFIL ========= */
+
+btnEditar.addEventListener("click", () => {
+
+    // SI YA ESTÁ EN MODO EDICIÓN → GUARDAR PERFIL
+    if (contPerfil.classList.contains("modo-edicion")) {
+
+        // DESACTIVAR lápices
+        desactivarModoEdicion();
+
+        // No tocamos modales acá porque no es un modal
+    } 
+    
+    // SI NO está en edición → ACTIVAR lápices
+    else {
+        activarModoEdicion();
+    }
+});
+
+/* ========= CUANDO GUARDÁS DESDE UN MODAL ========= */
+/*  
+    💛 MUY IMPORTANTE
+    Guardar desde un modal NO debe desactivar los lápices.
+*/
+
+const formCampo = document.querySelector("#Modal-Form");
+formCampo.addEventListener("submit", () => {
+    // No tocamos el modo edición
+    localStorage.setItem("modoEdicionActivo", "true");
+});
+
+/* Contraseña tampoco debe desactivar los lápices */
+const formContra = document.querySelector("#Modal-Contrasena form");
+formContra.addEventListener("submit", () => {
+    localStorage.setItem("modoEdicionActivo", "true");
+});
+
+/* ========= RECUPERAR ESTADO ========= */
+
+if (localStorage.getItem("modoEdicionActivo") === "true") {
+    activarModoEdicion();
+} else {
+    desactivarModoEdicion();
+}
+
+/* Desaparecer cartel automático */
+setTimeout(() => {
+    const alerta = document.getElementById("alerta-temporal");
+    if (alerta) alerta.style.display = "none";
+}, 2000);
