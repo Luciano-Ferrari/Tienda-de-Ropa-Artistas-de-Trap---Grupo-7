@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 26, 2025 at 03:21 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 28-11-2025 a las 10:46:59
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tienda`
+-- Base de datos: `tienda`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artistas`
+-- Estructura de tabla para la tabla `artistas`
 --
 
 CREATE TABLE `artistas` (
@@ -34,7 +34,7 @@ CREATE TABLE `artistas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `artistas`
+-- Volcado de datos para la tabla `artistas`
 --
 
 INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
@@ -52,7 +52,64 @@ INSERT INTO `artistas` (`id_artista`, `nombre`, `ruta_banner`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productos`
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id_pedido` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `calle` varchar(100) DEFAULT NULL,
+  `numero` varchar(20) DEFAULT NULL,
+  `ciudad` varchar(50) DEFAULT NULL,
+  `provincia` varchar(50) DEFAULT NULL,
+  `codigo_postal` varchar(20) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `titular_tarjeta` varchar(100) DEFAULT NULL,
+  `ultimos4` char(4) DEFAULT NULL,
+  `vencimiento` char(5) DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `nombre`, `calle`, `numero`, `ciudad`, `provincia`, `codigo_postal`, `total`, `titular_tarjeta`, `ultimos4`, `vencimiento`, `fecha`) VALUES
+(3, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 20.00, 'Amy Delgado', '7675', '02/28', '2025-11-28 06:02:28'),
+(4, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 40.00, 'Amy Delgado', '1212', '02/28', '2025-11-28 06:08:13'),
+(5, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 80.00, 'Amy Delgado', '5235', '02/28', '2025-11-28 06:08:59');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedido_detalle`
+--
+
+CREATE TABLE `pedido_detalle` (
+  `id_detalle` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `nombre_producto` varchar(255) DEFAULT NULL,
+  `precio_unitario` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_detalle`
+--
+
+INSERT INTO `pedido_detalle` (`id_detalle`, `id_pedido`, `id_producto`, `nombre_producto`, `precio_unitario`) VALUES
+(5, 3, 37, 'Remera de Duki ', 20.00),
+(6, 4, 37, 'Remera de Duki ', 20.00),
+(7, 4, 39, 'Remera de Duki', 20.00),
+(8, 5, 136, 'Remera de Trueno', 20.00),
+(9, 5, 176, 'Remera de Neo Pistea', 20.00),
+(10, 5, 180, 'Remera de Wos', 20.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
 --
 
 CREATE TABLE `productos` (
@@ -66,7 +123,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `productos`
+-- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `precio`, `ruta_imagen`, `categoria`) VALUES
@@ -296,43 +353,63 @@ INSERT INTO `productos` (`id_producto`, `id_artista`, `nombre`, `descripcion`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(50) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `contrasena` varchar(255) NOT NULL
+  `contrasena` varchar(255) NOT NULL,
+  `provincia` varchar(100) DEFAULT NULL,
+  `ciudad` varchar(100) DEFAULT NULL,
+  `codigo_postal` varchar(20) DEFAULT NULL,
+  `calle` varchar(120) DEFAULT NULL,
+  `numero` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `correo`, `contrasena`) VALUES
-(1, 'CRO', 'CRO@gmail.com', 'cro'),
-(7, 'luciano', 'ferrari@gmail', 'cabral');
+INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `correo`, `contrasena`, `provincia`, `ciudad`, `codigo_postal`, `calle`, `numero`) VALUES
+(1, 'CRO', 'CRO@gmail.com', 'cro', NULL, NULL, NULL, NULL, NULL),
+(7, 'luciano', 'ferrari@gmail', 'cabral', NULL, NULL, NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `artistas`
+-- Indices de la tabla `artistas`
 --
 ALTER TABLE `artistas`
   ADD PRIMARY KEY (`id_artista`);
 
 --
--- Indexes for table `productos`
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `pedido_detalle`
+--
+ALTER TABLE `pedido_detalle`
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `id_pedido` (`id_pedido`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `id_artista` (`id_artista`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
@@ -340,33 +417,58 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `correo` (`correo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `artistas`
+-- AUTO_INCREMENT de la tabla `artistas`
 --
 ALTER TABLE `artistas`
   MODIFY `id_artista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `productos`
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido_detalle`
+--
+ALTER TABLE `pedido_detalle`
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `productos`
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `pedido_detalle`
+--
+ALTER TABLE `pedido_detalle`
+  ADD CONSTRAINT `pedido_detalle_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pedido_detalle_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
+
+--
+-- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artistas` (`id_artista`);
