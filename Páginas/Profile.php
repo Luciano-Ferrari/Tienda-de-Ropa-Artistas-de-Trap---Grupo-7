@@ -31,7 +31,6 @@ $usuario = $resultado->fetch_assoc();
 </head>
 
 <body>
-
     <nav>
         <div class="nav-izq">
             <div class="Menu-Desplegable">
@@ -59,23 +58,41 @@ $usuario = $resultado->fetch_assoc();
         <div class="nav-der">
 
             <?php if (isset($_SESSION['logeado']) && $_SESSION['logeado']): ?>
-                <a href="Profile.php" class="btn-nav-der"><i class="bi bi-person"></i></a>
+
+                <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Profile.php" class="btn-nav-der">
+                    <i class="bi bi-person"></i>
+                </a>
+
             <?php else: ?>
-                <a href="Registro.php" class="btn-nav-der">Registrarse</a>
+
+                <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/Registro.php" class="btn-nav-der">
+                    Registrarse
+                </a>
+
             <?php endif; ?>
 
-            <img src="../src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg" id="Btn-Carrito">
+            <img src="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/src/img/c7e684b2a435c066935b4e6b856ea2444d134640.jpg"
+                alt="Carrito" id="Btn-Carrito">
 
             <aside id="carritoLateral" class="panel-der">
                 <h2>Carrito</h2>
-                <ul id="Lista-Productos"></ul>
+
+                <div id="Productos">
+                    <ul id="Lista-Productos"></ul>
+                </div>
+
                 <hr>
-                <ul id="Lista-Nombre-Precio"></ul>
+
+                <div>
+                    <ul id="Lista-Nombre-Precio"></ul>
+                </div>
+
                 <h5>Total</h5>
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <a href="MetodosPago.php" class="Btn-Pagar">Pagar</a>
+                    <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/MetodosPago.php"
+                        class="Btn-Pagar">Pagar</a>
                     <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>

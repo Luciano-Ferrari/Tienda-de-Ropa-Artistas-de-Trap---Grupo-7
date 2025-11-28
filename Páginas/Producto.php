@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../includes/conexion.php';
 
 $id_producto = $_GET['id_producto'] ?? null;
@@ -51,12 +52,14 @@ $conexion->close();
   <title><?php echo $nombre_producto; ?> | Tienda Trap</title>
   <link rel="stylesheet" href="../src/Css/Style.css">
   <link rel="stylesheet" href="../src/Css/DetalleProducto.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="../src/JavaScript/Script.js" defer></script>
 
   <script type="text/javascript">
     const productoData = {
       id: <?php echo json_encode($id_producto); ?>,
       nombre: <?php echo json_encode($nombre_producto); ?>,
-      info: <?php echo json_encode($fila["producto_info"]); ?>,
+      info: <?php echo json_encode($producto_info); ?>,
       precio: <?php echo json_encode($precio_bruto); ?>,
       artista: <?php echo json_encode($nombre_artista); ?>,
       imagen: <?php echo json_encode($ruta_imagen); ?>
