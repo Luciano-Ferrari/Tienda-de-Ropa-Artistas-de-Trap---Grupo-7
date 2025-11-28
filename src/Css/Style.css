@@ -2146,3 +2146,187 @@ footer hr {
     transform: translateY(0);
   }
 }
+
+/*Página de Pedir Datos*/
+
+/* ======================================================
+      PÁGINA PEDIR DATOS (ESTILO TIENDA TRAP)
+====================================================== */
+
+#PedirDatos-Main {
+  background-image: url(../img/b369cc0516b45cb41db38e25ba185cf47e11f77c.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+#PedirDatos-Cont {
+  width: 100%;
+  background-color: #f0eeee9c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0px;
+  gap: 40px;
+}
+
+/* ======================================================
+      TARJETA PRINCIPAL
+====================================================== */
+
+#PedirDatos-Form {
+  background: #ffffff;
+  width: 550px;
+  padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+#PedirDatos-Form h2 {
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 30px;
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+
+/* ======================================================
+      CAMPOS DEL FORMULARIO
+====================================================== */
+
+#PedirDatos-Form label {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#PedirDatos-Form input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1.8px solid #bcbcbc;
+  background: #fafafa;
+  font-size: 16px;
+  margin-bottom: 22px;
+  transition: 0.25s ease;
+}
+
+#PedirDatos-Form input[type="text"]:focus {
+  border-color: #000000;
+  background: #ffffff;
+}
+
+/* ======================================================
+      OPCIONES DE DIRECCIÓN
+====================================================== */
+
+.opciones-direccion {
+  background: #f8f8f8;
+  border: 1.5px solid #cccccc;
+  padding: 15px 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+}
+
+.opciones-direccion h4 {
+  font-size: 18px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.opciones-direccion label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+/* Botones radio */
+.opciones-direccion input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #000;
+  cursor: pointer;
+}
+
+/* ======================================================
+      BOTONES 
+====================================================== */
+
+.btn-continuar {
+  width: 100%;
+  padding: 15px;
+  background: #000000;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.btn-continuar:hover {
+  background: #2e2e2e;
+}
+
+.btn-cancelar-pedido {
+  width: 100%;
+  padding: 15px;
+  background: #dcdcdc;
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s ease;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.btn-cancelar-pedido:hover {
+  background: #bcbcbc;
+}
+
+/* ======================================================
+      ALERTAS TEMPORALES
+====================================================== */
+
+#alerta-pedirDatos {
+  width: 80%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin: 20px auto;
+  text-align: center;
+  animation: fadein .3s ease;
+}
+
+.alerta-exito {
+  background: #d7ffd9;
+  border: 2px solid #5bbf62;
+}
+
+.alerta-error {
+  background: #ffdada;
+  border: 2px solid #d75c5c;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

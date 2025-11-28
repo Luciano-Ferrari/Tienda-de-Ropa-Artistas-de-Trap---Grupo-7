@@ -91,8 +91,7 @@ $usuario = $resultado->fetch_assoc();
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <a href="/Tienda-de-Ropa-Artistas-de-Trap---Grupo-7/Páginas/MetodosPago.php"
-                        class="Btn-Pagar">Pagar</a>
+                    <a href="../Páginas/PedirDatos.php" class="Btn-Pagar">Pagar</a>
                     <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>

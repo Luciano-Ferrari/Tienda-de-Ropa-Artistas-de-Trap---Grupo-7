@@ -58,7 +58,7 @@
                 <p id="Suma-Total-Precios">$</p>
 
                 <div class="Btn-Carrito">
-                    <a href="Páginas/MetodosPago.php" class="Btn-Pagar">Pagar</a>
+                    <a href="Páginas/PedirDatos.php" class="Btn-Pagar">Pagar</a>
                     <button class="Btn-Eliminar">Eliminar Productos</button>
                 </div>
             </aside>
@@ -1086,6 +1086,17 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get("carrito_vacio") === "1") {
+                localStorage.removeItem("carritoTiendaTrap");
+            }
+        });
+    </script>
+
 </body>
 
 </html>

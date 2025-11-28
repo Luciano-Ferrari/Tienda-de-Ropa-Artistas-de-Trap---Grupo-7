@@ -1,13 +1,41 @@
 <?php
 session_start();
+include '../includes/conexion.php';
+
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: Registro.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $_SESSION["pedido_datos"] = [
+        "nombre" => $_POST["nombre"],
+        "calle" => $_POST["calle"],
+        "numero" => $_POST["numero"],
+        "ciudad" => $_POST["ciudad"],
+        "provincia" => $_POST["provincia"],
+        "codigo" => $_POST["codigo"],
+        "guardar" => $_POST["guardar"]
+    ];
+
+    header("Location: MetodosPago.php");
+    exit();
+}
+
+$id = $_SESSION["id_usuario"];
+$sql = "SELECT * FROM usuarios WHERE id_usuario = $id LIMIT 1";
+$res = $conexion->query($sql);
+$usuario = $res->fetch_assoc();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGO | Tienda Trap</title>
+    <title>Procesar Datos | Tienda de Trap</title>
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
@@ -81,65 +109,54 @@ session_start();
         </div>
     </nav>
 
-    <main class="pago-main">
-        <!-- TODO ESTO ES UN ÚNICO FORMULARIO -->
-        <form class="pago-cont" action="procesar_pedido.php" method="POST">
+    <main id="PedirDatos-Main">
 
-            <!-- COLUMNA IZQUIERDA: DATOS DE TARJETA -->
-            <div class="pago-form">
-                <h2>Método de pago</h2>
+        <div id="PedirDatos-Cont">
 
-                <label>Número de la tarjeta</label>
-                <input type="text" name="tarjeta" placeholder="XXXX XXXX XXXX XXXX" required>
+            <form id="PedirDatos-Form" action="PedirDatos.php" method="POST">
 
-                <label>Titular de la tarjeta</label>
-                <input type="text" name="titular" placeholder="Nombre completo" required>
+                <h2>Datos de Entrega</h2>
 
-                <div class="pago-venc-cvc">
-                    <div>
-                        <label>Vencimiento</label>
-                        <input type="text" name="vencimiento" placeholder="MM/AA" required>
-                    </div>
-                    <div>
-                        <label>CVC</label>
-                        <input type="text" name="cvc" placeholder="CVC" required>
-                    </div>
-                </div>
-            </div>
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" required value="<?php echo $usuario['nombre_usuario']; ?>">
 
-            <!-- COLUMNA DERECHA: RESUMEN + BOTONES -->
-            <div class="pago-resumen">
-                <h3>Resumen del pedido</h3>
+                <label for="calle">Calle</label>
+                <input type="text" name="calle" id="calle" required value="<?php echo $usuario['calle']; ?>">
 
-                <div class="resumen-cont-int">
-                    <div id="Productos">
-                        <ul id="Lista-Productos"></ul>
-                    </div>
-                    <hr>
-                    <div>
-                        <ul id="Lista-Nombre-Precio"></ul>
-                    </div>
-                </div>
+                <label for="numero">Número</label>
+                <input type="text" name="numero" id="numero" required value="<?php echo $usuario['numero']; ?>">
 
-                <div class="total">
-                    <h6>Total</h6>
-                    <p id="Suma-Total-Precios"></p>
+                <label for="ciudad">Ciudad</label>
+                <input type="text" name="ciudad" id="ciudad" required value="<?php echo $usuario['ciudad']; ?>">
+
+                <label for="provincia">Provincia</label>
+                <input type="text" name="provincia" id="provincia" required
+                    value="<?php echo $usuario['provincia']; ?>">
+
+                <label for="codigo">Código Postal</label>
+                <input type="text" name="codigo" id="codigo" required value="<?php echo $usuario['codigo_postal']; ?>">
+
+                <div class="opciones-direccion">
+                    <h4>Opciones de Dirección</h4>
+
+                    <label>
+                        <input type="radio" name="guardar" value="si" checked>
+                        Guardar como predeterminada
+                    </label>
+
+                    <label>
+                        <input type="radio" name="guardar" value="no">
+                        Usar solo para este pedido
+                    </label>
                 </div>
 
-                <div class="pago-botones">
-                    <button class="btn-realizar" type="submit" name="confirmar_pedido">Realizar pedido</button>
+                <button type="submit" class="btn-generico">Continuar</button>
+                <button type="button" class="btn-cancelar-pedido" onclick="window.history.back()">Cancelar</button>
 
-                    <button class="btn-cancelar" type="button" onclick="window.location.href='../Index.html'">
-                        Cancelar pedido
-                    </button>
-                </div>
+            </form>
 
-                <p class="legal">
-                    Al realizar este pedido confirmas que tienes autorización para usar este método de pago.
-                </p>
-            </div>
+        </div>
 
-        </form>
     </main>
 
 
@@ -187,6 +204,24 @@ session_start();
             </p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById("PedirDatos-Form").addEventListener("submit", async (e) => {
+            const carrito = localStorage.getItem("carritoTiendaTrap");
+
+            if (!carrito || carrito.length === 0) {
+                alert("El carrito está vacío");
+                e.preventDefault();
+                return;
+            }
+
+            await fetch("guardar_carrito.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "carrito=" + encodeURIComponent(carrito)
+            });
+        });
+    </script>
 
 </body>
 

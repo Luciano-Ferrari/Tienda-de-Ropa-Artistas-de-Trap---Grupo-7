@@ -184,18 +184,6 @@ if (btnAgregarCarrito && typeof productoData !== "undefined") {
     agregarProductoAlCarrito(productoData);
   });
 }
-
-const btnRealizarPedido = document.querySelector(".btn-realizar");
-
-if (btnRealizarPedido) {
-  btnRealizarPedido.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("Pedido realizado con éxito. Gracias por tu compra!");
-    localStorage.removeItem("carritoTiendaTrap");
-    window.location.href = "../Index.html";
-  });
-}
-
 const btnEliminarCarrito = document.querySelector(".Btn-Eliminar");
 
 if (btnEliminarCarrito) {
@@ -232,7 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", renderizarCarrito);
 
 /*Java del Perfil*/
-/* ========= MODAL CAMPOS ========= */
 
 function abrirModal(titulo, campo, valorActual) {
     document.getElementById("Modal-Fondo").style.display = "block";
@@ -251,8 +238,6 @@ document.getElementById("Cerrar-Modal").addEventListener("click", () => {
     document.getElementById("Modal-Perfil").classList.remove("activo");
 });
 
-/* ========= MODAL CONTRASEÑA ========= */
-
 function abrirModalContrasena() {
     document.getElementById("Modal-Fondo").style.display = "block";
     document.getElementById("Modal-Contrasena").classList.add("activo");
@@ -262,8 +247,6 @@ function cerrarModalContrasena() {
     document.getElementById("Modal-Fondo").style.display = "none";
     document.getElementById("Modal-Contrasena").classList.remove("activo");
 }
-
-/* ========= VER PASSWORD ========= */
 
 function verPassword(icono, idInput) {
     const input = document.getElementById(idInput);
@@ -277,19 +260,14 @@ function verPassword(icono, idInput) {
     }
 }
 
-/* ========= ELIMINAR DIRECCIÓN ========= */
-
 function eliminarDireccion() {
     if (confirm("¿Seguro que querés eliminar tu dirección?")) {
         
-        // Cuando elimina la dirección → SACAR lápices
         localStorage.setItem("modoEdicionActivo", "false");
 
         window.location.href = "eliminar_direc.php";
     }
 }
-
-/* ========= MODO EDICIÓN ========= */
 
 const btnEditar = document.getElementById("Btn-Editar-Perfil");
 const contPerfil = document.getElementById("Cont-Perfil");
@@ -306,44 +284,28 @@ function desactivarModoEdicion() {
     localStorage.setItem("modoEdicionActivo", "false");
 }
 
-/* ========= BOTÓN EDITAR PERFIL ========= */
-
 btnEditar.addEventListener("click", () => {
 
-    // SI YA ESTÁ EN MODO EDICIÓN → GUARDAR PERFIL
     if (contPerfil.classList.contains("modo-edicion")) {
 
-        // DESACTIVAR lápices
         desactivarModoEdicion();
 
-        // No tocamos modales acá porque no es un modal
     } 
-    
-    // SI NO está en edición → ACTIVAR lápices
     else {
         activarModoEdicion();
     }
 });
 
-/* ========= CUANDO GUARDÁS DESDE UN MODAL ========= */
-/*  
-    💛 MUY IMPORTANTE
-    Guardar desde un modal NO debe desactivar los lápices.
-*/
-
 const formCampo = document.querySelector("#Modal-Form");
 formCampo.addEventListener("submit", () => {
-    // No tocamos el modo edición
+
     localStorage.setItem("modoEdicionActivo", "true");
 });
 
-/* Contraseña tampoco debe desactivar los lápices */
 const formContra = document.querySelector("#Modal-Contrasena form");
 formContra.addEventListener("submit", () => {
     localStorage.setItem("modoEdicionActivo", "true");
 });
-
-/* ========= RECUPERAR ESTADO ========= */
 
 if (localStorage.getItem("modoEdicionActivo") === "true") {
     activarModoEdicion();
