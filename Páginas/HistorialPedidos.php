@@ -1,19 +1,51 @@
 <?php
 session_start();
+require_once "../includes/conexion.php";
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: Login.php");
+    exit();
+}
+
+$idUser = $_SESSION['id_usuario'];
+
+$pedidosPorPagina = 3;
+
+$pagina = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
+if ($pagina < 1) $pagina = 1;
+
+$inicio = ($pagina - 1) * $pedidosPorPagina;
+
+$sqlTotal = "SELECT COUNT(*) AS total FROM pedidos WHERE id_usuario = $idUser";
+$resTotal = $conexion->query($sqlTotal);
+$totalPedidos = $resTotal->fetch_assoc()['total'];
+
+$totalPaginas = ceil($totalPedidos / $pedidosPorPagina);
+
+$sql = "
+    SELECT * 
+    FROM pedidos 
+    WHERE id_usuario = $idUser
+    ORDER BY fecha DESC
+    LIMIT $inicio, $pedidosPorPagina
+";
+$pedidos = $conexion->query($sql);
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGO | Tienda Trap</title>
+    <title>Historial de Pedidos | Tienda Trap</title>
     <link rel="stylesheet" href="../src/Css/Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../src/JavaScript/Script.js" defer></script>
 </head>
 
 <body>
+
     <nav>
         <div class="nav-izq">
             <div class="Menu-Desplegable">
@@ -81,64 +113,60 @@ session_start();
         </div>
     </nav>
 
-    <main class="pago-main">
-        <form class="pago-cont" action="procesar_pedido.php" method="POST">
+    <main id="Historial-Cont">
 
-            <div class="pago-form">
-                <h2>Método de pago</h2>
+        <h2>Historial de Pedidos</h2>
+        <hr>
 
-                <label>Número de la tarjeta</label>
-                <input type="text" name="tarjeta" placeholder="XXXX XXXX XXXX XXXX" required>
+        <?php if ($pedidos->num_rows > 0): ?>
+            <?php while ($p = $pedidos->fetch_assoc()): ?>
 
-                <label>Titular de la tarjeta</label>
-                <input type="text" name="titular" placeholder="Nombre completo" required>
+                <div class="pedido-historial">
+                    <h3>Pedido #<?= $p['id_pedido'] ?></h3>
 
-                <div class="pago-venc-cvc">
-                    <div>
-                        <label>Vencimiento</label>
-                        <input type="text" name="vencimiento" placeholder="MM/AA" required>
-                    </div>
-                    <div>
-                        <label>CVC</label>
-                        <input type="text" name="cvc" placeholder="CVC" required>
-                    </div>
+                    <p><strong>Fecha:</strong> <?= $p['fecha'] ?></p>
+                    <p><strong>Envío:</strong> <?= $p['calle'] ?>         <?= $p['numero'] ?>, <?= $p['ciudad'] ?>,
+                        <?= $p['provincia'] ?></p>
+                    <p><strong>Total:</strong> $<?= number_format($p['total'], 2) ?></p>
+                    <p><strong>Tarjeta:</strong> **** **** **** <?= $p['ultimos4'] ?></p>
                 </div>
+
+            <?php endwhile; ?>
+        <?php else: ?>
+
+            <p style="text-align:center; font-size:22px; font-weight:700; margin-top:40px;">
+                No tienes pedidos todavía.
+            </p>
+
+        <?php endif; ?>
+
+        <?php if ($totalPaginas > 1): ?>
+            <div class="paginacion">
+
+                <?php if ($pagina > 1): ?>
+                    <a href="?pagina=<?= $pagina - 1 ?>">&lt;</a>
+                <?php else: ?>
+                    <span class="disabled">&lt;</span>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                    <?php if ($i == $pagina): ?>
+                        <span class="actual"><?= $i ?></span>
+                    <?php else: ?>
+                        <a href="?pagina=<?= $i ?>"><?= $i ?></a>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+                <?php if ($pagina < $totalPaginas): ?>
+                    <a href="?pagina=<?= $pagina + 1 ?>">&gt;</a>
+                <?php else: ?>
+                    <span class="disabled">&gt;</span>
+                <?php endif; ?>
+
             </div>
+        <?php endif; ?>
 
-            <div class="pago-resumen">
-                <h3>Resumen del pedido</h3>
-
-                <div class="resumen-cont-int">
-                    <div id="Productos">
-                        <ul id="Lista-Productos"></ul>
-                    </div>
-                    <hr>
-                    <div>
-                        <ul id="Lista-Nombre-Precio"></ul>
-                    </div>
-                </div>
-
-                <div class="total">
-                    <h6>Total</h6>
-                    <p id="Suma-Total-Precios"></p>
-                </div>
-
-                <div class="pago-botones">
-                    <button class="btn-realizar" type="submit" name="confirmar_pedido">Realizar pedido</button>
-
-                    <button class="btn-cancelar" type="button" onclick="window.location.href='../Index.html'">
-                        Cancelar pedido
-                    </button>
-                </div>
-
-                <p class="legal">
-                    Al realizar este pedido confirmas que tienes autorización para usar este método de pago.
-                </p>
-            </div>
-
-        </form>
     </main>
-
 
     <footer>
         <div class="Footer-Cont">

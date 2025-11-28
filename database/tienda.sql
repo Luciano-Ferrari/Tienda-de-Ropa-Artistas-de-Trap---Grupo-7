@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2025 a las 10:46:59
+-- Tiempo de generación: 28-11-2025 a las 11:19:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -76,9 +76,7 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `nombre`, `calle`, `numero`, `ciudad`, `provincia`, `codigo_postal`, `total`, `titular_tarjeta`, `ultimos4`, `vencimiento`, `fecha`) VALUES
-(3, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 20.00, 'Amy Delgado', '7675', '02/28', '2025-11-28 06:02:28'),
-(4, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 40.00, 'Amy Delgado', '1212', '02/28', '2025-11-28 06:08:13'),
-(5, 1, 'CRO', 'Pasteur', '724', 'Buenos Aires', 'CABA', '1028', 80.00, 'Amy Delgado', '5235', '02/28', '2025-11-28 06:08:59');
+(1, 1, 'CRO', 'Jujuy', '255', 'Buenos Aires', 'CABA', '1428', 80.00, 'Tomás Manuel Campos', '1234', '02/28', '2025-11-28 10:18:56');
 
 -- --------------------------------------------------------
 
@@ -99,12 +97,7 @@ CREATE TABLE `pedido_detalle` (
 --
 
 INSERT INTO `pedido_detalle` (`id_detalle`, `id_pedido`, `id_producto`, `nombre_producto`, `precio_unitario`) VALUES
-(5, 3, 37, 'Remera de Duki ', 20.00),
-(6, 4, 37, 'Remera de Duki ', 20.00),
-(7, 4, 39, 'Remera de Duki', 20.00),
-(8, 5, 136, 'Remera de Trueno', 20.00),
-(9, 5, 176, 'Remera de Neo Pistea', 20.00),
-(10, 5, 180, 'Remera de Wos', 20.00);
+(1, 1, 88, 'Vinilo de C.R.O.', 80.00);
 
 -- --------------------------------------------------------
 
@@ -373,7 +366,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `correo`, `contrasena`, `provincia`, `ciudad`, `codigo_postal`, `calle`, `numero`) VALUES
-(1, 'CRO', 'CRO@gmail.com', 'cro', NULL, NULL, NULL, NULL, NULL),
+(1, 'CRO', 'CRO@gmail.com', 'cro', 'CABA', 'Buenos Aires', '1428', 'Jujuy', '255'),
 (7, 'luciano', 'ferrari@gmail', 'cabral', NULL, NULL, NULL, NULL, NULL);
 
 --
@@ -430,13 +423,13 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_detalle`
 --
 ALTER TABLE `pedido_detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

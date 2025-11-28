@@ -1913,7 +1913,8 @@ footer hr {
   width: 100%;
 }
 
-#Btn-Editar-Perfil {
+#Btn-Editar-Perfil,
+.btn-historial {
   background: #000;
   color: white;
   border: none;
@@ -1924,16 +1925,17 @@ footer hr {
   cursor: pointer;
   font-family: "Bricolage Grotesque", sans-serif;
   transition: 0.2s ease;
+  text-decoration: none;
 }
 
-#Btn-Editar-Perfil:hover {
-  background: #292929;
+#Btn-Editar-Perfil:hover,
+.btn-historial:hover {
+  background: #5e5e5e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 /*Modal de Perfil*/
-/* ============================
-      MODAL MEJORADO
-============================ */
 
 .modal-fondo {
   position: fixed;
@@ -2149,10 +2151,6 @@ footer hr {
 
 /*Página de Pedir Datos*/
 
-/* ======================================================
-      PÁGINA PEDIR DATOS (ESTILO TIENDA TRAP)
-====================================================== */
-
 #PedirDatos-Main {
   background-image: url(../img/b369cc0516b45cb41db38e25ba185cf47e11f77c.png);
   background-position: center;
@@ -2171,10 +2169,6 @@ footer hr {
   gap: 40px;
 }
 
-/* ======================================================
-      TARJETA PRINCIPAL
-====================================================== */
-
 #PedirDatos-Form {
   background: #ffffff;
   width: 550px;
@@ -2189,10 +2183,6 @@ footer hr {
   margin-bottom: 28px;
   font-weight: 700;
 }
-
-/* ======================================================
-      CAMPOS DEL FORMULARIO
-====================================================== */
 
 #PedirDatos-Form label {
   font-size: 17px;
@@ -2217,10 +2207,6 @@ footer hr {
   border-color: #000000;
   background: #ffffff;
 }
-
-/* ======================================================
-      OPCIONES DE DIRECCIÓN
-====================================================== */
 
 .opciones-direccion {
   background: #f8f8f8;
@@ -2247,17 +2233,12 @@ footer hr {
   margin-bottom: 8px;
 }
 
-/* Botones radio */
 .opciones-direccion input[type="radio"] {
   width: 18px;
   height: 18px;
   accent-color: #000;
   cursor: pointer;
 }
-
-/* ======================================================
-      BOTONES 
-====================================================== */
 
 .btn-continuar {
   width: 100%;
@@ -2296,10 +2277,6 @@ footer hr {
   background: #bcbcbc;
 }
 
-/* ======================================================
-      ALERTAS TEMPORALES
-====================================================== */
-
 #alerta-pedirDatos {
   width: 80%;
   padding: 14px 18px;
@@ -2325,8 +2302,140 @@ footer hr {
     opacity: 0;
     transform: translateY(-6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+.btn-generico {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  background: #535353;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-generico:hover {
+  background: #c4c4c4;
+  color: black;
+}
+
+
+/*Página de Historial de Pedidos*/
+
+#Historial-Cont {
+  background-image: url(../img/b369cc0516b45cb41db38e25ba185cf47e11f77c.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  min-height: 100vh;
+  padding: 100px 0;
+  background-color: #f0eeee9c;
+}
+
+#Historial-Cont h2 {
+  text-align: center;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+#Historial-Cont hr {
+  width: 60%;
+  margin: 0 auto 40px auto;
+  border: none;
+  height: 3px;
+  background: #000000;
+  border-radius: 20px;
+}
+
+.pedido-historial {
+  width: 600px;
+  background: #ffffff;
+  margin: 0 auto 30px auto;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  animation: fadeInPedidos .35s ease;
+}
+
+@keyframes fadeInPedidos {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pedido-historial h3 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.pedido-historial p {
+  font-size: 17px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pedido-historial strong {
+  font-weight: 800;
+}
+
+#Historial-Cont hr {
+  height: 2px;
+  width: 600px;
+  background: #cfcfcf;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.paginacion {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.paginacion a,
+.paginacion span {
+  text-decoration: none;
+  color: #757575;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.paginacion a:hover {
+  color: #000;
+}
+
+.paginacion .actual {
+  color: #000;
+}
+
+.paginacion .disabled {
+  color: #c8c8c8;
+  cursor: default;
 }

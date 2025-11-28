@@ -187,6 +187,7 @@ $usuario = $resultado->fetch_assoc();
 
             <div id="Acciones-Perfil">
                 <button id="Btn-Editar-Perfil">Editar Perfil</button>
+                <a href="HistorialPedidos.php" class="btn-historial">Ver historial de pedidos</a>
             </div>
 
         </div>
